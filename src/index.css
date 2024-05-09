@@ -1,5 +1,6 @@
 :root {
   --max-width-page: 1200px;
+  --max-width-content: 1250px;
 }
 
 *,
@@ -38,4 +39,20 @@ a:hover {
 img,
 picture {
   width: 100%;
+}
+
+.postCategory {
+  outline: 1.5px solid black;
+  padding: 0.2em 0.15em 0.2em 0.15em;
+  position: absolute;
+  box-shadow: -5px 5px 5px black;
+  text-transform: capitalize;
+  background-color: white;
+}
+
+.postDescription {
+  line-height: 1.2em;
+  height: 3.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 import userEvent from "@testing-library/user-event";
-import routes from "../router/routes";
 import NavComponent from "../components/NavComponent";
 import App from "../App";
 
