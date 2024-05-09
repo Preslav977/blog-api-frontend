@@ -13,7 +13,7 @@ function NavComponent() {
     return (
       <nav className={styles.navContainer}>
         <ul className={styles.navContent}>
-          <li onClick={toggleNavComponentDropDown}>
+          <li data-testid="read" onClick={toggleNavComponentDropDown}>
             Read
             <img
               className={styles.navSvgIcons}
