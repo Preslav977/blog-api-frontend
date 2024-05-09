@@ -17,11 +17,11 @@ function PostComponent({
           alt={postImgAlt}
         />
         <div className={styles.mainPagePostCategoryContainer}>
-          <p className={styles.postCategory}>{postCategory}</p>
+          <p className="postCategory">{postCategory}</p>
         </div>
         <div className={styles.mainPagePostBody}>
           <h2>{postTitle}</h2>
-          <p className={styles.postDescription}>{postBody}</p>
+          <p className="postDescription">{postBody}</p>
         </div>
       </article>
     </>

@@ -1,0 +1,30 @@
+.postContainerGrid {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: var(--padding-content);
+  display: grid;
+  grid-auto-columns: 1fr;
+  gap: 1.5em;
+  grid-template-areas:
+    "firstPost"
+    "secondPost"
+    "thirdPost"
+    "fourthPost"
+    "fifthPost";
+}
+
+@media screen and (min-width: 75em) {
+  .postContainerGrid {
+    grid-template-areas:
+      "firstPost firstPost thirdPost thirdPost secondPost secondPost"
+      "fourthPost fourthPost thirdPost thirdPost fifthPost fifthPost";
+  }
+}
+
+@media screen and (min-width: 56.5em) {
+  .postContainerGrid {
+    grid-template-areas:
+      "firstPost firstPost thirdPost thirdPost secondPost secondPost"
+      "fourthPost fourthPost thirdPost thirdPost fifthPost fifthPost";
+  }
+}

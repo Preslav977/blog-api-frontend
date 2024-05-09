@@ -1,4 +1,4 @@
-.mainPagePostArticleContainer:first-child {
+.mainPagePostArticleContainer:nth-child(1) {
   grid-area: firstPost;
 }
 
@@ -14,15 +14,15 @@
   grid-area: fourthPost;
 }
 
-.mainPagePostArticleContainer:last-child {
+.mainPagePostArticleContainer:nth-child(5) {
   grid-area: fifthPost;
 }
 
-.mainPagePostImg:not(3) {
+.mainPagePostImg {
   aspect-ratio: 11.5 / 8;
 }
 
-.mainPagePostImg:nth-child(3) {
+.mainPagePostArticleContainer:nth-child(3) > .mainPagePostImg {
   aspect-ratio: 9 / 14;
   object-fit: cover;
 }
@@ -39,4 +39,8 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
+}
+
+.mainPagePostBody > h2 {
+  margin-top: 0.9em;
 }
