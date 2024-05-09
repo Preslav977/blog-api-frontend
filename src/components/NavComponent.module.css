@@ -1,0 +1,65 @@
+.navContent {
+  max-width: var(--max-width-page);
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.navComponentSvgIcons {
+  width: 1.2em;
+}
+
+.navSvgIcons:first-child {
+  margin-left: 0.3em;
+  width: 0.8em;
+}
+
+.navSvgIcons:nth-child(2) {
+  width: 1.4em;
+}
+
+.navMainPage {
+  letter-spacing: 0.3em;
+  /* outline: 2px solid black; */
+  text-transform: uppercase;
+}
+
+.navRightSideContent {
+  display: flex;
+  align-items: center;
+}
+
+.loginButton {
+  padding: 0.4rem 0.8rem 0.4rem 0.8rem;
+  margin-right: 1rem;
+  background-color: #9443e0;
+  color: #fff;
+  border-radius: 0.1rem;
+  border: 0;
+}
+
+.navMenuWrapper {
+  width: 100%;
+  position: absolute;
+}
+
+.navMenuContainer {
+  background-color: #e6e6e6;
+}
+
+.navMenuContent {
+  max-width: var(--max-width-page);
+  margin-inline: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.navigationLinks {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
