@@ -9,7 +9,10 @@ function AuthorComponent() {
             <p className={styles.attentionAuthors}>Attention</p>
           </dir>
           <h3>Want to be an author in this blog?</h3>
-          <p className={styles.authorInformation}>
+          <p
+            data-testid="authorInformation"
+            className={styles.authorInformation}
+          >
             Check out your own
             <a className={styles.authorAnchor} href="">
               author suite!
