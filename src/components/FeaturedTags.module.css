@@ -1,0 +1,23 @@
+.featuredTagsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 2em 2em;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #e6e6e6;
+  gap: 1.2rem;
+}
+
+.featuredTags {
+  display: flex;
+  gap: 1.2em;
+}
+
+.featuredTags > p {
+  outline: 1.5px solid black;
+  padding: 0.2em 0.15em 0.2em 0.15em;
+  box-shadow: -5px 5px 5px black;
+  text-transform: capitalize;
+  background-color: white;
+}
