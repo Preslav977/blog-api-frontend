@@ -21,7 +21,7 @@ function FetchPosts() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>Loading....</p>;
+  if (loading) return <p data-testid="loading">Loading....</p>;
   if (error) return <p>A network error was encountered</p>;
 
   return (
