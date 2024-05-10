@@ -17,7 +17,9 @@ function PostComponent({
           alt={postImgAlt}
         />
         <div className={styles.mainPagePostCategoryContainer}>
-          <p className="postCategory">{postCategory}</p>
+          <p data-testid="postCategory" className="postCategory">
+            {postCategory}
+          </p>
         </div>
         <div className={styles.mainPagePostBody}>
           <h2>{postTitle}</h2>
