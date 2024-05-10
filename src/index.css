@@ -1,6 +1,7 @@
 :root {
   --max-width-page: 1200px;
   --max-width-content: 1250px;
+  --max-width-sub-content: 1225px;
   --padding-content: 0px 0.8em 0px 0.8em;
 }
 
@@ -56,4 +57,8 @@ picture {
   height: 3.5em;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+hr {
+  margin: 3em 0px;
 }

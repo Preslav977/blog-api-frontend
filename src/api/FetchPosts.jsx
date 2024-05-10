@@ -2,6 +2,7 @@ import styles from "./FetchPosts.module.css";
 import { useState, useEffect, useContext } from "react";
 import { PostContext } from "../App";
 import PostComponent from "../components/PostComponent";
+import AuthorComponent from "../components/AuthorComponent";
 
 function FetchPosts() {
   const [posts, setPosts] = useContext(PostContext);
@@ -25,7 +26,7 @@ function FetchPosts() {
   if (error) return <p>A network error was encountered</p>;
 
   return (
-    <main>
+    <main className={styles.mainContent}>
       <div className={styles.postContainerGrid}>
         {posts.map((post) => (
           <PostComponent
@@ -37,6 +38,9 @@ function FetchPosts() {
           />
         ))}
       </div>
+      <hr />
+      <AuthorComponent />
+      <hr />
     </main>
   );
 }
