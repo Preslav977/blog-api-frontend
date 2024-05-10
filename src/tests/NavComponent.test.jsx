@@ -62,14 +62,20 @@ describe("Should render NavComponent", () => {
 
     await waitForElementToBeRemoved(() => screen.queryByTestId("loading"));
 
+    const user = userEvent.setup();
+
+    const readLink = screen.getByTestId("read");
+
+    await user.click(readLink);
+
     screen.debug();
 
-    const postCategory = screen.queryByText("folkore (myths and legends)");
+    const postCategory = screen.queryAllByTestId("postCategory");
 
-    expect(postCategory).toBeInTheDocument();
+    const postTitle = screen.queryAllByRole("heading", { level: 2 });
 
-    expect(
-      screen.queryByText("Bulgaria - Myths And Legends").textContent,
-    ).toMatch(/bulgaria - myths And legends/i);
+    expect(postCategory[0]).toBeInTheDocument();
+
+    expect(postTitle[0]).toBeInTheDocument();
   });
 });

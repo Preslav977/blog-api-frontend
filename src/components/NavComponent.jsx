@@ -84,7 +84,9 @@ function NavComponent() {
                     </figure>
                     <div>
                       <div className={styles.navPostDescription}>
-                        <a href="#">{post.category[0].category}</a>
+                        <a data-testid="postCategory" href="#">
+                          {post.category[0].category}
+                        </a>
                         <h2>{post.title}</h2>
                       </div>
                     </div>
