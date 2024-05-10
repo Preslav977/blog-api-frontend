@@ -1,18 +1,18 @@
-import styles from "./FeaturedTags.module.css";
+import styles from "./FeaturedTagsComponent.module.css";
 
-function FeaturedTags() {
+function FeaturedTagsComponent() {
   return (
     <section className={styles.featuredTagsContainer}>
       <h4>Featured Tags</h4>
       <div className={styles.featuredTags}>
-        <p>#Bulgaria</p>
-        <p>#Folklore</p>
-        <p>#History</p>
-        <p>#Traditions</p>
-        <p>#Customs</p>
+        <a href="">#Bulgaria</a>
+        <a href="">#Folklore</a>
+        <a href="">#History</a>
+        <a href="">#Traditions</a>
+        <a href="">#Customs</a>
       </div>
     </section>
   );
 }
 
-export default FeaturedTags;
+export default FeaturedTagsComponent;

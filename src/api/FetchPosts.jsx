@@ -4,7 +4,7 @@ import { PostContext } from "../App";
 import PostComponent from "../components/PostComponent";
 import AuthorComponent from "../components/AuthorComponent";
 import FlexedPostComponent from "../components/FlexedPostComponent";
-import FeaturedTags from "../components/FeaturedTagsComponent";
+import FeaturedTagsComponent from "../components/FeaturedTagsComponent";
 
 function FetchPosts() {
   const [posts, setPosts] = useContext(PostContext);
@@ -54,8 +54,7 @@ function FetchPosts() {
           />
         ))}
       </section>
-      <hr />
-      <FeaturedTags />
+      <FeaturedTagsComponent />
     </main>
   );
 }

@@ -14,7 +14,7 @@
   gap: 1.2em;
 }
 
-.featuredTags > p {
+.featuredTags > a {
   outline: 1.5px solid black;
   padding: 0.2em 0.15em 0.2em 0.15em;
   box-shadow: -5px 5px 5px black;
