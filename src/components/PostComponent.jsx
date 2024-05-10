@@ -12,6 +12,7 @@ function PostComponent({
     <>
       <article className={styles.mainPagePostArticleContainer}>
         <img
+          data-testid="postImg"
           className={styles.mainPagePostImg}
           src={postImgSrc}
           alt={postImgAlt}
