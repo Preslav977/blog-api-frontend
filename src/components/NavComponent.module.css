@@ -44,6 +44,7 @@
 .navMenuWrapper {
   width: 100%;
   position: absolute;
+  z-index: 1;
 }
 
 .navMenuContainer {
@@ -56,10 +57,41 @@
   padding: 1rem;
   display: flex;
   align-items: flex-start;
+  gap: 1.5em;
 }
 
 .navigationLinks {
   display: flex;
   gap: 1rem;
   flex-direction: column;
+}
+
+.navPostArticles {
+  display: flex;
+  align-items: center;
+}
+
+.navPostImgContainer {
+  margin-bottom: 0.5rem;
+}
+
+.navPostImg {
+  height: 100px;
+}
+
+.navPostDescription {
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  .navPostArticles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .navPostDescription {
+    text-align: center;
+  }
 }

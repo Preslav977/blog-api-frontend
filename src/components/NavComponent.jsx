@@ -1,9 +1,11 @@
 import styles from "./NavComponent.module.css";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { PostContext } from "../App";
 
 function NavComponent() {
   const [navComponentDropDown, setNavComponentDropDrop] = useState(false);
+  const [posts, setPosts] = useContext(PostContext);
 
   function toggleNavComponentDropDown() {
     setNavComponentDropDrop((navComponentDropDown) => !navComponentDropDown);
@@ -70,6 +72,25 @@ function NavComponent() {
                 <Link href="">Customs</Link>
                 <Link href="">History</Link>
               </nav>
+              <div>
+                {posts.slice(0, 2).map((post) => (
+                  <article className={styles.navPostArticles} key={post._id}>
+                    <figure className={styles.navPostImgContainer}>
+                      <img
+                        className={styles.navPostImg}
+                        src={post.image_link}
+                        alt=""
+                      />
+                    </figure>
+                    <div>
+                      <div className={styles.navPostDescription}>
+                        <a href="#">{post.category[0].category}</a>
+                        <h2>{post.title}</h2>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </div>
