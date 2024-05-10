@@ -1,0 +1,57 @@
+.mainCommunitySection {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: var(--padding-content);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 1.5em;
+  margin-top: 2em;
+}
+
+.socialMediaIconsContainer {
+  display: flex;
+  gap: 1.2em;
+}
+
+.socialMediaIcon {
+  width: 30px;
+}
+
+.secondaryCommunitySection {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: var(--padding-content);
+  gap: 1.5em;
+}
+
+.gridImageContainer > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gridImageContainer:nth-child(1) {
+  grid-row: 1 / 2 span;
+}
+
+.imageOwner {
+  position: absolute;
+  background-color: #fff;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  outline: 1.5px solid black;
+  padding: 0.2em 0.15em 0.2em 0.15em;
+  box-shadow: -5px 5px 5px black;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 900px) {
+  .secondaryCommunitySection {
+    grid-template-columns: auto;
+  }
+}

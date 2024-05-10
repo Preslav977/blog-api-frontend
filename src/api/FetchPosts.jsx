@@ -5,6 +5,7 @@ import PostComponent from "../components/PostComponent";
 import AuthorComponent from "../components/AuthorComponent";
 import FlexedPostComponent from "../components/FlexedPostComponent";
 import FeaturedTagsComponent from "../components/FeaturedTagsComponent";
+import CommunityComponent from "../components/CommunityComponent";
 
 function FetchPosts() {
   const [posts, setPosts] = useContext(PostContext);
@@ -55,6 +56,18 @@ function FetchPosts() {
         ))}
       </section>
       <FeaturedTagsComponent />
+      <section className={styles.mainPageSecondaryPostsSection}>
+        {posts.map((post) => (
+          <FlexedPostComponent
+            key={post._id}
+            postImgSrc={post.image_link}
+            postCategory={post.category[0].category}
+            postTitle={post.title}
+            postBody={post.body}
+          />
+        ))}
+      </section>
+      <CommunityComponent />
     </main>
   );
 }
