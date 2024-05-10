@@ -2,6 +2,7 @@ import { useState, createContext } from "react";
 import "./index.css";
 import NavComponent from "./components/NavComponent";
 import FetchPosts from "./api/FetchPosts";
+import FooterComponent from "./components/FooterComponent";
 
 export const PostContext = createContext(null);
 
@@ -14,6 +15,7 @@ function App() {
         <NavComponent />
         <FetchPosts />
       </PostContext.Provider>
+      <FooterComponent />
     </>
   );
 }
