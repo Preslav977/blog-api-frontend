@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { PostContext } from "../App";
 import PostComponent from "../components/PostComponent";
 import AuthorComponent from "../components/AuthorComponent";
+import FlexedPostComponent from "../components/FlexedPostComponent";
 
 function FetchPosts() {
   const [posts, setPosts] = useContext(PostContext);
@@ -41,6 +42,17 @@ function FetchPosts() {
       <hr />
       <AuthorComponent />
       <hr />
+      <section>
+        {posts.map((post) => (
+          <FlexedPostComponent
+            key={post._id}
+            postImgSrc={post.image_link}
+            postCategory={post.category[0].category}
+            postTitle={post.title}
+            postBody={post.body}
+          />
+        ))}
+      </section>
     </main>
   );
 }

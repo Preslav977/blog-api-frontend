@@ -1,0 +1,62 @@
+.mainPageFlexedPostContainer {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  padding: var(--padding-content);
+  margin-bottom: 1.5em;
+}
+
+.mainPageFlexedPostImg {
+  max-width: 370px;
+}
+
+.mainPageFlexedPostInformation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.mainPageFlexCategory {
+  display: inline-block;
+  outline: 1.5px solid black;
+  padding: 0.2em 0.15em 0.2em 0.15em;
+  box-shadow: -5px 5px 5px black;
+  text-transform: capitalize;
+  background-color: white;
+}
+
+.postFlexedDescription {
+  line-height: 1.3em;
+  height: 4em;
+  overflow: hidden;
+  width: 60%;
+}
+
+@media screen and (max-width: 900px) {
+  .mainPageFlexedPostImg {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mainPageFlexedPostContainer {
+    display: block;
+  }
+
+  .mainPageFlexedPostContainer,
+  .mainPageFlexedPostInformation,
+  .mainPageFlexedPostInformation {
+    text-align: center;
+  }
+
+  .mainPageFlexedPostBody {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mainPageFlexCategory {
+    margin-top: 0.2rem;
+  }
+}

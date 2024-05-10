@@ -28,3 +28,14 @@
       "fourthPost fourthPost thirdPost thirdPost fifthPost fifthPost";
   }
 }
+
+.homeSectionPosts {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  padding: var(--padding-content);
+  margin-bottom: 1.5em;
+}

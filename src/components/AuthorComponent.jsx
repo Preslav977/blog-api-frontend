@@ -13,7 +13,7 @@ function AuthorComponent() {
             data-testid="authorInformation"
             className={styles.authorInformation}
           >
-            Check out your own
+            Check out your own{" "}
             <a className={styles.authorAnchor} href="">
               author suite!
             </a>{" "}
