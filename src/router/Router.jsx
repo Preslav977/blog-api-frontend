@@ -1,13 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "../App";
-import PostComponent from "../components/PostComponent";
+import FetchPosts from "../api/FetchPosts";
+import PostDetailComponent from "../components/PostDetailedComponent";
 
 const Router = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <App />,
-      children: [{ index: true, element: <PostComponent /> }],
+      children: [
+        { index: true, element: <FetchPosts /> },
+        { path: "/posts/:id", element: <PostDetailComponent /> },
+      ],
     },
   ]);
 

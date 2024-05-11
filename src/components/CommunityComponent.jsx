@@ -82,7 +82,7 @@ function CommunityComponent() {
         </div>
         <div className={styles.gridImageContainer}>
           <div className={styles.imageOwner}>
-            <a href="https://unsplash.com/@george_ivanow">@AGeorge Ivanov</a>
+            <a href="https://unsplash.com/@george_ivanow">@George Ivanov</a>
           </div>
           <img
             data-testid="img"

@@ -23,7 +23,7 @@ function FetchPosts() {
       .then((response) => setPosts(response))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
-  }, []);
+  }, [setPosts]);
 
   if (loading) return <p data-testid="loading">Loading....</p>;
   if (error) return <p>A network error was encountered</p>;
@@ -34,6 +34,7 @@ function FetchPosts() {
         {posts.map((post) => (
           <PostComponent
             key={post._id}
+            postId={`/posts/${post._id}`}
             postImgSrc={post.image_link}
             postCategory={post.category[0].category}
             postTitle={post.title}

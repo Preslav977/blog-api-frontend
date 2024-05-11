@@ -39,7 +39,7 @@
 }
 
 .authorSectionImg {
-  width: 40%;
+  width: 80%;
   aspect-ratio: 11.5 / 8;
   object-fit: cover;
 }
@@ -60,5 +60,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .authorSectionImg {
+    width: 40%;
   }
 }
