@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "../App";
 import FetchPosts from "../api/FetchPosts";
-import PostDetailComponent from "../components/PostDetailedComponent";
+import FetchSinglePost from "../api/FetchSinglePost";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -10,7 +10,7 @@ const Router = () => {
       element: <App />,
       children: [
         { index: true, element: <FetchPosts /> },
-        { path: "/posts/:id", element: <PostDetailComponent /> },
+        { path: "/posts/:id", element: <FetchSinglePost /> },
       ],
     },
   ]);

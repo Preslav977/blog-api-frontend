@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function PostComponent({
   postId,
-
   postImgSrc,
   postImgAlt,
   postCategory,

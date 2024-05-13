@@ -23,7 +23,8 @@
 
 .navMainPage {
   letter-spacing: 0.3em;
-
+  font-size: 1.25em;
+  margin-left: 2.2em;
   text-transform: uppercase;
 }
 
