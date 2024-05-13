@@ -76,11 +76,13 @@ function NavComponent() {
                 {posts.slice(0, 2).map((post) => (
                   <article className={styles.navPostArticles} key={post._id}>
                     <figure className={styles.navPostImgContainer}>
-                      <img
-                        className={styles.navPostImg}
-                        src={post.image_link}
-                        alt=""
-                      />
+                      <Link to={`/posts/:${post._id}`}>
+                        <img
+                          className={styles.navPostImg}
+                          src={post.image_link}
+                          alt=""
+                        />
+                      </Link>
                     </figure>
                     <div>
                       <div className={styles.navPostDescription}>

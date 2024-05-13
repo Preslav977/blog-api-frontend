@@ -5,7 +5,6 @@ import {
 } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import PostComponent from "../components/PostComponent";
-import FetchPosts from "../api/FetchPosts";
 import routes from "../router/routes";
 import { describe, expect } from "vitest";
 

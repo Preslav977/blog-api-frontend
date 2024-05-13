@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-import { PostContext } from "../App";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./FetchSinglePost.module.css";
+import { Link } from "react-router-dom";
 
 function FetchSinglePost() {
   const [post, setPost] = useState([]);
@@ -29,7 +29,11 @@ function FetchSinglePost() {
   return (
     <article className={styles.articleDetailedContainer}>
       <div className={styles.articleCategoryContainer}>
-        <p className={styles.articleCategory}>Folklore</p>
+        <p className={styles.articleCategory}>
+          <Link to={`/posts/${post.category[0]._id}/category`}>
+            {post.category[0].category}
+          </Link>
+        </p>
       </div>
       <div className={styles.articleAuthorInformation}>
         <h2>{post.title}</h2>
@@ -49,8 +53,14 @@ function FetchSinglePost() {
       <div className={styles.articleDetailedTagsContainer}>
         <h3>Tags</h3>
         <div className={styles.articleTags}>
-          {post["tags"].map((obj) => (
-            <p key={obj}>#{obj}</p>
+          {post["tags"].map((postTags) => (
+            <Link
+              className={styles.articleCategory}
+              key={postTags}
+              to={`/posts/${postTags}/tag`}
+            >
+              #{postTags}
+            </Link>
           ))}
         </div>
       </div>

@@ -22,6 +22,12 @@
   box-shadow: -5px 5px 5px black;
   text-transform: uppercase;
   background-color: white;
+  text-decoration: none;
+  color: black;
+}
+
+.articleCategory:visited {
+  color: black;
 }
 
 .articleAuthorAndDateContainer {
