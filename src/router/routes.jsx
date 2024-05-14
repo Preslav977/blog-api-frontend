@@ -11,7 +11,7 @@ const routes = [
     children: [
       { index: true, element: <FetchPosts /> },
       { path: "/posts/:id", element: <FetchSinglePost /> },
-      { path: "/posts/category/:name", element: <FetchPostsByCategory /> },
+      { path: "/posts/category/:id", element: <FetchPostsByCategory /> },
       { path: "/posts/tag/:name", element: <FetchPostsByTags /> },
     ],
   },

@@ -16,13 +16,13 @@ describe("Should render FetchPosts component", () => {
 
     render(<RouterProvider router={router} />);
 
-    screen.debug();
-
     const apiLoading = screen.queryByTestId("loading");
 
     expect(apiLoading).toBeInTheDocument();
 
     await waitForElementToBeRemoved(() => screen.queryByTestId("loading"));
+
+    screen.debug();
   });
 
   it("should render one post on the main page", () => {

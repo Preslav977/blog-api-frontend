@@ -66,19 +66,34 @@ function NavComponent() {
             <div className={styles.navMenuContent}>
               <nav className={styles.navigationLinks}>
                 <h2>Topics</h2>
-                <Link to="/posts/category/66385c0321f139566ed13cba">
+                <Link
+                  data-testid="folklore"
+                  to="/posts/category/66385c0321f139566ed13cba"
+                >
                   Folklore
                 </Link>
-                <Link to="/posts/category/6638623421f139566ed13cda">
+                <Link
+                  data-testid="folklore music"
+                  to="/posts/category/6638623421f139566ed13cda"
+                >
                   Folklore Music
                 </Link>
-                <Link to="posts/category/6638645f21f139566ed13d10">
+                <Link
+                  data-testid="traditions"
+                  to="posts/category/6638645f21f139566ed13d10"
+                >
                   Traditions
                 </Link>
-                <Link to="posts/category/663863df21f139566ed13cff">
+                <Link
+                  data-testid="customs"
+                  to="posts/category/663863df21f139566ed13cff"
+                >
                   Customs
                 </Link>
-                <Link to="posts/category/6638632621f139566ed13ceb">
+                <Link
+                  data-testid="history"
+                  to="posts/category/6638632621f139566ed13ceb"
+                >
                   History
                 </Link>
               </nav>
