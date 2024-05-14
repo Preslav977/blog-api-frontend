@@ -42,7 +42,9 @@ function CommunityComponent() {
       <section className={styles.secondaryCommunitySection}>
         <div className={styles.gridImageContainer}>
           <div className={styles.imageOwner}>
-            <a href="https://unsplash.com/@blooddrainer">@Anton Spasov</a>
+            <a href="https://unsplash.com/@blooddrainer" target="_blank">
+              @Anton Spasov
+            </a>
           </div>
           <img
             data-testid="img"
@@ -52,7 +54,9 @@ function CommunityComponent() {
         </div>
         <div className={styles.gridImageContainer}>
           <div className={styles.imageOwner}>
-            <a href="https://unsplash.com/@inedelchev">@Ivan Nedelchev</a>
+            <a href="https://unsplash.com/@inedelchev" target="_blank">
+              @Ivan Nedelchev
+            </a>
           </div>{" "}
           <img
             data-testid="img"
@@ -62,7 +66,9 @@ function CommunityComponent() {
         </div>
         <div className={styles.gridImageContainer}>
           <div className={styles.imageOwner}>
-            <a href="https://unsplash.com/@hrsahatchiev">@Hristo Sahatchiev</a>
+            <a href="https://unsplash.com/@hrsahatchiev" target="_blank">
+              @Hristo Sahatchiev
+            </a>
           </div>
           <img
             data-testid="img"
@@ -72,7 +78,9 @@ function CommunityComponent() {
         </div>
         <div className={styles.gridImageContainer}>
           <div className={styles.imageOwner}>
-            <a href="https://unsplash.com/@blooddrainer">@Anton Spasov</a>
+            <a href="https://unsplash.com/@blooddrainer" target="_blank">
+              @Anton Spasov
+            </a>
           </div>
           <img
             data-testid="img"
@@ -82,7 +90,9 @@ function CommunityComponent() {
         </div>
         <div className={styles.gridImageContainer}>
           <div className={styles.imageOwner}>
-            <a href="https://unsplash.com/@george_ivanow">@George Ivanov</a>
+            <a href="https://unsplash.com/@george_ivanow" target="_blank">
+              @George Ivanov
+            </a>
           </div>
           <img
             data-testid="img"

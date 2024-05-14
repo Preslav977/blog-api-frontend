@@ -51,9 +51,13 @@ function FetchPosts() {
         {posts.map((post) => (
           <FlexedPostComponent
             key={post._id}
+            postImgPathId={`/posts/${post._id}`}
             postImgSrc={post.image_link}
+            postCategoryPathId={`/posts/category/${post.category[0]._id}`}
             postCategory={post.category[0].category}
+            postTitlePathId={`/posts/${post._id}`}
             postTitle={post.title}
+            postBodyPathId={`/posts/${post._id}`}
             postBody={post.body}
           />
         ))}
@@ -63,9 +67,13 @@ function FetchPosts() {
         {posts.map((post) => (
           <FlexedPostComponent
             key={post._id}
+            postImgPathId={`/posts/${post._id}`}
             postImgSrc={post.image_link}
+            postCategoryPathId={`/posts/category/${post.category[0]._id}`}
             postCategory={post.category[0].category}
+            postTitlePathId={`/posts/${post._id}`}
             postTitle={post.title}
+            postBodyPathId={`/posts/${post._id}`}
             postBody={post.body}
           />
         ))}

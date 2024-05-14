@@ -1,34 +1,46 @@
 import styles from "./FlexedPostComponent.module.css";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function FlexedPostComponent({
+  postImgPathId,
   postImgSrc,
   postImgAlt,
+  postCategoryPathId,
   postCategory,
+  postTitlePathId,
   postTitle,
+  postBodyPathId,
   postBody,
 }) {
   return (
     <>
       <article className={styles.mainPageFlexedPostContainer}>
-        <img
-          data-testid="postImg"
-          className={styles.mainPageFlexedPostImg}
-          src={postImgSrc}
-          alt={postImgAlt}
-        />
+        <Link to={postImgPathId}>
+          <img
+            data-testid="postImg"
+            className={styles.mainPageFlexedPostImg}
+            src={postImgSrc}
+            alt={postImgAlt}
+          />
+        </Link>
         <div className={styles.mainPageFlexedPostInformation}>
           <div>
-            <p
+            <Link
+              to={postCategoryPathId}
               data-testid="postCategory"
               className={styles.mainPageFlexCategory}
             >
               {postCategory}
-            </p>
+            </Link>
           </div>
-          <h2>{postTitle}</h2>
+          <Link to={postTitlePathId}>
+            <h2>{postTitle}</h2>
+          </Link>
           <div className={styles.mainPageFlexedPostBody}>
-            <p className={styles.postFlexedDescription}>{postBody}</p>
+            <Link to={postBodyPathId}>
+              <p className={styles.postFlexedDescription}>{postBody}</p>
+            </Link>
           </div>
         </div>
       </article>
@@ -37,10 +49,14 @@ function FlexedPostComponent({
 }
 
 FlexedPostComponent.propTypes = {
+  postImgPathId: PropTypes.string,
   postImgSrc: PropTypes.string,
   postImgAlt: PropTypes.string,
+  postCategoryPathId: PropTypes.string,
   postCategory: PropTypes.string,
+  postTitlePathId: PropTypes.string,
   postTitle: PropTypes.string,
+  postBodyPathId: PropTypes.string,
   postBody: PropTypes.string,
 };
 

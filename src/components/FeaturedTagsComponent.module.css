@@ -19,6 +19,12 @@
   outline: 1.5px solid black;
   padding: 0.2em 0.15em 0.2em 0.15em;
   box-shadow: -5px 5px 5px black;
-  text-transform: capitalize;
+  text-transform: uppercase;
   background-color: white;
+  text-decoration: none;
+  color: black;
+}
+
+.featuredTags > a:visited {
+  color: black;
 }
