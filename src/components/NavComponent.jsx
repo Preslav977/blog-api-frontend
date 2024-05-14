@@ -66,17 +66,27 @@ function NavComponent() {
             <div className={styles.navMenuContent}>
               <nav className={styles.navigationLinks}>
                 <h2>Topics</h2>
-                <Link href="">Folklore</Link>
-                <Link href="">Folklore Music</Link>
-                <Link href="">Traditions</Link>
-                <Link href="">Customs</Link>
-                <Link href="">History</Link>
+                <Link to="/posts/category/66385c0321f139566ed13cba">
+                  Folklore
+                </Link>
+                <Link to="/posts/category/6638623421f139566ed13cda">
+                  Folklore Music
+                </Link>
+                <Link to="posts/category/6638645f21f139566ed13d10">
+                  Traditions
+                </Link>
+                <Link to="posts/category/663863df21f139566ed13cff">
+                  Customs
+                </Link>
+                <Link to="posts/category/6638632621f139566ed13ceb">
+                  History
+                </Link>
               </nav>
               <div>
                 {posts.slice(0, 2).map((post) => (
                   <article className={styles.navPostArticles} key={post._id}>
                     <figure className={styles.navPostImgContainer}>
-                      <Link to={`/posts/:${post._id}`}>
+                      <Link to={`/posts/${post._id}`}>
                         <img
                           className={styles.navPostImg}
                           src={post.image_link}
@@ -86,10 +96,15 @@ function NavComponent() {
                     </figure>
                     <div>
                       <div className={styles.navPostDescription}>
-                        <a data-testid="postCategory" href="#">
+                        <Link
+                          data-testid="postCategory"
+                          to={`/posts/category/${post.category[0]._id}`}
+                        >
                           {post.category[0].category}
-                        </a>
-                        <h2>{post.title}</h2>
+                        </Link>
+                        <Link to={`/posts/${post._id}`}>
+                          <h2>{post.title}</h2>
+                        </Link>
                       </div>
                     </div>
                   </article>
