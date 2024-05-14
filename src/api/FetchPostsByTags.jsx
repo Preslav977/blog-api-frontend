@@ -4,17 +4,15 @@ import { PostContext } from "../App";
 import { Link } from "react-router-dom";
 import FlexedPostComponent from "../components/FlexedPostComponent";
 
-function FetchPostsByCategory() {
+function FetchPostsByTags() {
   const [posts, setPosts] = useContext(PostContext);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(posts);
-
   const { name } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/posts/category/${name}`, { mode: "cors" })
+    fetch(`http://localhost:3000/posts/tag/${name}`, { mode: "cors" })
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Server Error");
@@ -45,4 +43,4 @@ function FetchPostsByCategory() {
   );
 }
 
-export default FetchPostsByCategory;
+export default FetchPostsByTags;

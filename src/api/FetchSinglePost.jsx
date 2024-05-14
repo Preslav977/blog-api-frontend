@@ -30,7 +30,7 @@ function FetchSinglePost() {
     <article className={styles.articleDetailedContainer}>
       <div className={styles.articleCategoryContainer}>
         <p className={styles.articleCategory}>
-          <Link to={`/posts/${post.category[0]._id}/category`}>
+          <Link to={`/posts/category/${post.category[0].category}`}>
             {post.category[0].category}
           </Link>
         </p>
@@ -57,7 +57,7 @@ function FetchSinglePost() {
             <Link
               className={styles.articleCategory}
               key={postTags}
-              to={`/posts/${postTags}/tag`}
+              to={`/posts/tag/${postTags}`}
             >
               #{postTags}
             </Link>

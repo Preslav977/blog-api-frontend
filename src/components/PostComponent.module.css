@@ -22,7 +22,7 @@
   aspect-ratio: 11.5 / 8;
 }
 
-.mainPagePostArticleContainer:nth-child(3) > .mainPagePostImg {
+.mainPagePostArticleContainer:nth-child(3) > a > .mainPagePostImg {
   aspect-ratio: 9 / 14;
   object-fit: cover;
 }
@@ -41,6 +41,6 @@
   align-items: center;
 }
 
-.mainPagePostBody > h2 {
+.mainPagePostBody > a > h2 {
   margin-top: 0.9em;
 }

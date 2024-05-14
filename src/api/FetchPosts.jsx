@@ -34,10 +34,12 @@ function FetchPosts() {
         {posts.map((post) => (
           <PostComponent
             key={post._id}
-            postId={`/posts/${post._id}`}
+            postImgPathId={`/posts/${post._id}`}
             postImgSrc={post.image_link}
+            postCategoryPathId={`/posts/category/${post.category[0]._id}`}
             postCategory={post.category[0].category}
             postTitle={post.title}
+            postBodyPathId={`/posts/${post._id}`}
             postBody={post.body}
           />
         ))}
