@@ -29,7 +29,7 @@ function AuthorComponent() {
         <div className={styles.authorSectionImgContainer}>
           <img
             className={styles.authorSectionImg}
-            src="./src/assets/author-girl.jpeg"
+            src="./public/author-girl.jpeg"
             alt=""
           />
         </div>

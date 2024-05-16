@@ -3,6 +3,7 @@ import "./index.css";
 import NavComponent from "./components/NavComponent";
 import FooterComponent from "./components/FooterComponent";
 import { Outlet } from "react-router-dom";
+import SignUpFormComponent from "./components/SignUpFormComponent";
 
 export const PostContext = createContext(null);
 
@@ -13,7 +14,8 @@ function App() {
     <>
       <PostContext.Provider value={[posts, setPosts]}>
         <NavComponent />
-        <Outlet />
+        {/* <Outlet /> */}
+        <SignUpFormComponent />
       </PostContext.Provider>
       <FooterComponent />
     </>

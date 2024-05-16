@@ -1,0 +1,55 @@
+.signUpFormContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2em;
+}
+
+.signUpFormPolicyContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.privacyContent {
+  width: 80%;
+  text-align: center;
+}
+
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+input {
+  padding: 0.5em;
+  width: 100%;
+}
+
+.signUpFormWelcome {
+  margin-bottom: 0.5rem;
+}
+
+.formContentWrapper {
+  margin-bottom: 1em;
+}
+
+.signUpButtonContainer {
+  margin-bottom: 1em;
+}
+
+.signUpButton {
+  padding: 0.5em 1.5em;
+  background-color: #423c3a83;
+  border: 0;
+  color: white;
+  font-size: 1em;
+}
+
+a.signUpFormLink {
+  color: #9443e0;
+}

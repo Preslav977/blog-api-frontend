@@ -19,7 +19,7 @@ function NavComponent() {
             Read
             <img
               className={styles.navSvgIcons}
-              src="./src/assets/down-arrow.svg"
+              src="./public/down-arrow.svg"
               alt="down arrow dropdown"
             />
           </li>
@@ -34,7 +34,7 @@ function NavComponent() {
             <button className={styles.loginButton}>Log in</button>
             <img
               className={styles.navSvgIcons}
-              src="./src/assets/search.svg"
+              src="./public/search.svg"
               alt="search posts"
             />
           </div>
@@ -49,18 +49,22 @@ function NavComponent() {
             Read
             <img
               className={styles.navSvgIcons}
-              src="./src/assets/up-arrow.svg"
+              src="./public/up-arrow.svg"
               alt="up arrow dropdown"
             />
           </li>
           <Link href="/">
-            <span className={styles.navMainPage}>Bulgarian</span>
+            <span className={styles.navMainPage}>
+              <span className={styles.whiteBackground}>Bul</span>
+              <span className={styles.redBackground}>gar</span>
+              <span className={styles.greenBackground}>ian</span>
+            </span>
           </Link>
           <div className={styles.navRightSideContent}>
             <button className={styles.loginButton}>Log in</button>
             <img
               className={styles.navSvgIcons}
-              src="./src/assets/search.svg"
+              src="./public/search.svg"
               alt="search posts"
             />
           </div>

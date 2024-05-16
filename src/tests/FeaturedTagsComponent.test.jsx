@@ -16,7 +16,7 @@ describe("Should render FeaturedTagsComponent", () => {
 
     render(<RouterProvider router={router} />);
 
-    screen.debug();
+    // screen.debug();
 
     expect(screen.queryByText("#Bulgaria").textContent).toMatch(/#bulgaria/i);
 

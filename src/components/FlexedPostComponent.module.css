@@ -59,4 +59,8 @@
   .mainPageFlexCategory {
     margin-top: 0.2rem;
   }
+
+  .postFlexedDescription {
+    width: 100%;
+  }
 }
