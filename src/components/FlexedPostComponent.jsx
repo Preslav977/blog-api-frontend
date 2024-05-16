@@ -39,7 +39,12 @@ function FlexedPostComponent({
           </Link>
           <div className={styles.mainPageFlexedPostBody}>
             <Link to={postBodyPathId}>
-              <p className={styles.postFlexedDescription}>{postBody}</p>
+              <p
+                data-testid="postBody"
+                className={styles.postFlexedDescription}
+              >
+                {postBody}
+              </p>
             </Link>
           </div>
         </div>
