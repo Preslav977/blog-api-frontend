@@ -30,7 +30,7 @@ function FetchSinglePost() {
     <article className={styles.articleDetailedContainer}>
       <div className={styles.articleCategoryContainer}>
         <p className={styles.articleCategory}>
-          <Link to={`/posts/category/${post.category[0].category}`}>
+          <Link to={`/posts/category/${post.category[0]._id}`}>
             {post.category[0].category}
           </Link>
         </p>
@@ -43,11 +43,16 @@ function FetchSinglePost() {
         </div>
       </div>
       <div className={styles.articleDetailedImageContainer}>
-        <img className={styles.articleImage} src={post.image_link} alt="" />
-        <p>Photo by Trekking Bulgaria</p>
+        <img
+          data-testid="postImg"
+          className={styles.articleImage}
+          src={post.image_link}
+          alt=""
+        />
+        <p>Photo by {post.image_owner}</p>
       </div>
       <div className={styles.articleDetailedDescriptionContainer}>
-        <p>{post.body}</p>
+        <p data-testid="postBody">{post.body}</p>
       </div>
 
       <div className={styles.articleDetailedTagsContainer}>

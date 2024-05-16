@@ -8,6 +8,18 @@
   position: relative;
 }
 
+.whiteBackground {
+  color: #e2dfd2;
+}
+
+.redBackground {
+  color: red;
+}
+
+.greenBackground {
+  color: green;
+}
+
 .navComponentSvgIcons {
   width: 1.2em;
 }
@@ -77,7 +89,8 @@
 }
 
 .navPostImg {
-  max-height: 100px;
+  max-height: 130px;
+  object-fit: cover;
 }
 
 .navPostDescription {

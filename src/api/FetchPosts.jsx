@@ -31,7 +31,7 @@ function FetchPosts() {
   return (
     <main className={styles.mainContent}>
       <div className={styles.postContainerGrid}>
-        {posts.map((post) => (
+        {posts.slice(0, 5).map((post) => (
           <PostComponent
             key={post._id}
             postImgPathId={`/posts/${post._id}`}
@@ -48,7 +48,7 @@ function FetchPosts() {
       <AuthorComponent />
       <hr />
       <section>
-        {posts.map((post) => (
+        {posts.slice(0, 5).map((post) => (
           <FlexedPostComponent
             key={post._id}
             postImgPathId={`/posts/${post._id}`}
@@ -64,7 +64,7 @@ function FetchPosts() {
       </section>
       <FeaturedTagsComponent />
       <section className={styles.mainPageSecondaryPostsSection}>
-        {posts.map((post) => (
+        {posts.slice(5, 10).map((post) => (
           <FlexedPostComponent
             key={post._id}
             postImgPathId={`/posts/${post._id}`}

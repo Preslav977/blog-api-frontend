@@ -13,27 +13,29 @@ describe("Should render FetchSinglePost component", () => {
     const router = createMemoryRouter(routes, {
       initialEntries: [
         "",
-        "/posts/:id",
-        "/posts/category/:id",
-        "/posts/tag/:name",
+        "/posts/664351780af56e5421b60547",
+        // "/posts/category/:id",
+        // "/posts/tag/:name",
       ],
       initialIndex: 0,
     });
 
     render(<RouterProvider router={router} />);
 
-    const apiLoading = screen.queryByTestId("loading");
+    screen.debug();
+
+    const apiLoading = screen.queryByText("Loading....");
 
     expect(apiLoading).toBeInTheDocument();
 
-    await waitForElementToBeRemoved(() => screen.queryByTestId("loading"));
-
-    const user = userEvent.setup();
-
-    const postCategory = screen.queryAllByTestId("postCategory");
-
-    await user.click(postCategory[0]);
+    await waitForElementToBeRemoved(() => screen.queryByText("Loading...."));
 
     screen.debug();
+
+    // const user = userEvent.setup();
+
+    // const postCategory = screen.queryAllByTestId("postCategory");
+
+    // await user.click(postCategory[0]);
   });
 });

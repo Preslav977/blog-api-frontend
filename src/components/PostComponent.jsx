@@ -34,8 +34,10 @@ function PostComponent({
         </div>
         <div className={styles.mainPagePostBody}>
           <Link to={postBodyPathId}>
-            <h2>{postTitle}</h2>
-            <p className="postDescription">{postBody}</p>
+            <h2 data-testid="postTitle">{postTitle}</h2>
+            <p data-testid="postBody" className="postDescription">
+              {postBody}
+            </p>
           </Link>
         </div>
       </article>

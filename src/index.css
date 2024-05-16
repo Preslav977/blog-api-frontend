@@ -28,6 +28,7 @@ html:focus-within {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 a:visited {
