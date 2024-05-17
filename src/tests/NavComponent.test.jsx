@@ -557,4 +557,77 @@ describe("Should render NavComponent", () => {
 
     expect(logInBtn[0].textContent).toMatch(/log in/i);
   });
+
+  it("should navigate to LogInFormComponent first and then to SignUpFormComponent", async () => {
+    const router = createMemoryRouter(routes, {
+      initialEntries: ["", "/account/login", "/account/signup"],
+      initialIndex: 0,
+    });
+
+    render(<RouterProvider router={router} />);
+
+    const user = userEvent.setup();
+
+    const logInButton = screen.queryByRole("button");
+
+    await user.click(logInButton);
+
+    expect(
+      screen.queryByText("Welcome back to Bulgarian!").textContent,
+    ).toMatch(/welcome back to bulgarian!/i);
+
+    expect(screen.queryByTestId("logInFormPrivacy").textContent).toEqual(
+      "By continuing, you are agree to our User Agreement and Privacy Policy.",
+    );
+
+    expect(screen.queryByText("Email:").textContent).toMatch(/email:/i);
+
+    expect(screen.queryByText("Password:").textContent).toMatch(/password:/i);
+
+    expect(screen.queryByTestId("logInFormTextAndLink").textContent).toEqual(
+      "Don't an account yet? Sign Up Now",
+    );
+
+    const logInBtn = screen.queryAllByRole("button");
+
+    expect(logInBtn[0].textContent).toMatch(/log in/i);
+
+    // const signUpNowLink = screen.queryByTestId("logInFormTextAndLink");
+
+    const signUpNowLink = screen.queryByText("Sign Up Now");
+
+    await user.click(signUpNowLink);
+
+    screen.debug();
+
+    expect(screen.queryByText("Welcome to Bulgarian!").textContent).toMatch(
+      /welcome to bulgarian!/i,
+    );
+    expect(screen.queryByTestId("signUpFormPrivacy").textContent).toEqual(
+      "By continuing, you creating a Bulgarian account and hereby agree to our User Agreement and Privacy Policy",
+    );
+    expect(screen.queryByText("User Agreement").textContent).toMatch(
+      /user agreement/i,
+    );
+    expect(screen.queryByText("Privacy Policy").textContent).toMatch(
+      /privacy policy/i,
+    );
+    expect(screen.queryByText("Email:").textContent).toMatch(/email:/i);
+    expect(screen.queryByText("Username:").textContent).toMatch(/username:/i);
+    expect(screen.queryByText("First Name:").textContent).toMatch(
+      /first name:/i,
+    );
+    expect(screen.queryByText("Last Name:").textContent).toMatch(/last name:/i);
+    expect(screen.queryByText("Password:").textContent).toMatch(/password:/i);
+    expect(screen.queryByText("Confirm Password:").textContent).toMatch(
+      /confirm password:/i,
+    );
+    const signUpButton = screen.queryAllByRole("button");
+
+    expect(signUpButton[1].textContent).toMatch(/sign up/i);
+
+    expect(screen.queryByTestId("signUpFormTextAndLink").textContent).toEqual(
+      "Already have an account? Login",
+    );
+  });
 });
