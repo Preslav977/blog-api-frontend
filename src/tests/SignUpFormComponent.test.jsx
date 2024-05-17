@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import routes from "../router/routes";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { describe, expect } from "vitest";
 

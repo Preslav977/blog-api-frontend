@@ -9,7 +9,7 @@ function LogInFormComponent() {
           <h3 className={styles.logInFormWelcome}>
             Welcome back to Bulgarian!
           </h3>
-          <p>
+          <p data-testid="logInFormPrivacy">
             By continuing, you are agree to our{" "}
             <a className={styles.logInFormLink}>User Agreement</a> and{" "}
             <a className={styles.logInFormLink}>Privacy Policy.</a>
@@ -17,17 +17,17 @@ function LogInFormComponent() {
         </div>
         <form className={styles.logInForm} action="/user/login" method="POST">
           <div className={styles.formContentWrapper}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email:</label>
             <input type="email" name="email" />
           </div>
           <div className={styles.formContentWrapper}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password:</label>
             <input type="password" name="password" />
           </div>
           <div className={styles.logInButtonContainer}>
             <button className={styles.logInButton}>Log in</button>
           </div>
-          <p>
+          <p data-testid="logInFormTextAndLink">
             Don&apos;t an account yet?{" "}
             <Link className={styles.logInFormLink} to="/account/signup">
               Sign Up Now
