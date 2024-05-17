@@ -31,7 +31,9 @@ function NavComponent() {
             </span>
           </Link>
           <div className={styles.navRightSideContent}>
-            <button className={styles.loginButton}>Log in</button>
+            <Link to={"/account/login"}>
+              <button className={styles.loginButton}>Log in</button>
+            </Link>
             <img
               className={styles.navSvgIcons}
               src="./public/search.svg"
@@ -61,7 +63,9 @@ function NavComponent() {
             </span>
           </Link>
           <div className={styles.navRightSideContent}>
-            <button className={styles.loginButton}>Log in</button>
+            <Link to={"/account/login"}>
+              <button className={styles.loginButton}>Log in</button>
+            </Link>
             <img
               className={styles.navSvgIcons}
               src="./public/search.svg"

@@ -1,16 +1,16 @@
-.signUpFormWrapper {
+.logInFormWrapper {
   min-height: 75vh;
 }
 
-.signUpFormContainer {
+.logInFormContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2em;
+  margin-top: 2.5em;
 }
 
-.signUpFormPolicyContent {
+.logInFormPolicyContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,41 +18,29 @@
   margin-bottom: 2em;
 }
 
-.signUpFormWelcome {
-  margin-bottom: 0.5rem;
-}
-
-.privacyContent {
-  width: 80%;
-  text-align: center;
-}
-
-a.signUpFormLink {
-  color: #9443e0;
-}
-
-.signUpForm {
+.logInForm {
   display: flex;
   flex-direction: column;
   width: 500px;
+  margin: 0 auto;
+}
+
+a.logInFormLink {
+  color: #9443e0;
 }
 
 .formContentWrapper {
   margin-bottom: 1em;
 }
 
-input {
-  padding: 0.5em;
-  width: 100%;
-}
-
-.signUpButtonContainer {
+.logInButtonContainer {
   margin-bottom: 1em;
 }
 
-.signUpButton {
+.logInButton {
   padding: 0.5em 1.5em;
   background-color: #423c3a83;
   border: 0;
   color: white;
+  font-size: 1em;
 }
