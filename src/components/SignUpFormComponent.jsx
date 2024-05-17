@@ -1,4 +1,5 @@
 import styles from "./SignUpFormComponent.module.css";
+import { Link } from "react-router-dom";
 
 function SignUpFormComponent() {
   return (
@@ -6,7 +7,7 @@ function SignUpFormComponent() {
       <div className={styles.signUpFormContainer}>
         <div className={styles.signUpFormPolicyContent}>
           <h3 className={styles.signUpFormWelcome}>Welcome to Bulgarian!</h3>
-          <p className={styles.privacyContent}>
+          <p data-testid="signUpFormPrivacy" className={styles.privacyContent}>
             By continuing, you creating a Bulgarian account and hereby agree to
             our <a className={styles.signUpFormLink}>User Agreement</a> and{" "}
             <a className={styles.signUpFormLink}>Privacy Policy</a>
@@ -30,11 +31,11 @@ function SignUpFormComponent() {
             <input type="text" name="last_name" />
           </div>
           <div className={styles.formContentWrapper}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password:</label>
             <input type="password" name="password" />
           </div>
           <div className={styles.formContentWrapper}>
-            <label htmlFor="confirm_password">Confirm Password</label>
+            <label htmlFor="confirm_password">Confirm Password:</label>
             <input type="password" name="confirm_password" />
           </div>
           <div className={styles.signUpButtonContainer}>
@@ -42,11 +43,11 @@ function SignUpFormComponent() {
               Sign up
             </button>
           </div>
-          <p>
+          <p data-testid="signUpFormTextAndLink">
             Already have an account?{" "}
-            <a className={styles.signUpFormLink} href="/account/login">
+            <Link className={styles.signUpFormLink} to="/account/login">
               Login
-            </a>
+            </Link>
           </p>
         </form>
       </div>

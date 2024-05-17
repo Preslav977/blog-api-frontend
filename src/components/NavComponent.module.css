@@ -54,6 +54,10 @@
   border: 0;
 }
 
+.loginButton:hover {
+  cursor: pointer;
+}
+
 .navMenuWrapper {
   width: 100%;
   position: absolute;
