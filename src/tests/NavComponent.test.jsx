@@ -520,4 +520,41 @@ describe("Should render NavComponent", () => {
 
     expect(postTitle[0].textContent).toMatch(/bulgarian music folklore/i);
   });
+
+  it("should navigate to LogInFormComponent", async () => {
+    const router = createMemoryRouter(routes, {
+      initialEntries: ["", "/account/login"],
+      initialIndex: 0,
+    });
+
+    render(<RouterProvider router={router} />);
+
+    const user = userEvent.setup();
+
+    const logInButton = screen.queryByRole("button");
+
+    await user.click(logInButton);
+
+    screen.debug();
+
+    expect(
+      screen.queryByText("Welcome back to Bulgarian!").textContent,
+    ).toMatch(/welcome back to bulgarian!/i);
+
+    expect(screen.queryByTestId("logInFormPrivacy").textContent).toEqual(
+      "By continuing, you are agree to our User Agreement and Privacy Policy.",
+    );
+
+    expect(screen.queryByText("Email:").textContent).toMatch(/email:/i);
+
+    expect(screen.queryByText("Password:").textContent).toMatch(/password:/i);
+
+    expect(screen.queryByTestId("logInFormTextAndLink").textContent).toEqual(
+      "Don't an account yet? Sign Up Now",
+    );
+
+    const logInBtn = screen.queryAllByRole("button");
+
+    expect(logInBtn[0].textContent).toMatch(/log in/i);
+  });
 });
