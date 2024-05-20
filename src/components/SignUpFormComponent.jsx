@@ -1,7 +1,15 @@
 import styles from "./SignUpFormComponent.module.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 function SignUpFormComponent() {
+  const { user, setUser } = useContext(UserContext);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <div className={styles.signUpFormWrapper}>
       <div className={styles.signUpFormContainer}>
@@ -13,26 +21,55 @@ function SignUpFormComponent() {
             <a className={styles.signUpFormLink}>Privacy Policy</a>
           </p>
         </div>
-        <form className={styles.signUpForm} action="POST">
+        <form
+          action="http://localhost:3000/user/signup"
+          method="POST"
+          onSubmit={handleSubmit}
+          className={styles.signUpForm}
+        >
           <div className={styles.formContentWrapper}>
             <label htmlFor="email">Email:</label>
-            <input type="email" name="email" />
+            <input
+              type="email"
+              name="email"
+              minLength={5}
+              maxLength={30}
+              required
+            />
           </div>
           <div className={styles.formContentWrapper}>
             <label htmlFor="username">Username:</label>
-            <input type="text" name="username" />
+            <input
+              type="text"
+              name="username"
+              minLength={5}
+              maxLength={30}
+              required
+            />
           </div>
           <div className={styles.formContentWrapper}>
             <label htmlFor="first_name">First Name:</label>
-            <input type="text" name="first_name" />
+            <input
+              type="text"
+              name="first_name"
+              minLength={5}
+              maxLength={30}
+              required
+            />
           </div>
           <div className={styles.formContentWrapper}>
             <label htmlFor="last_name">Last Name:</label>
-            <input type="text" name="last_name" />
+            <input
+              type="text"
+              name="last_name"
+              minLength={5}
+              maxLength={30}
+              required
+            />
           </div>
           <div className={styles.formContentWrapper}>
             <label htmlFor="password">Password:</label>
-            <input type="password" name="password" />
+            <input type="password" name="password" minLength={8} required />
           </div>
           <div className={styles.formContentWrapper}>
             <label htmlFor="confirm_password">Confirm Password:</label>
@@ -40,7 +77,7 @@ function SignUpFormComponent() {
           </div>
           <div className={styles.signUpButtonContainer}>
             <button className={styles.signUpButton} type="submit">
-              Sign up
+              <Link to="/account/login">Sign Up</Link>
             </button>
           </div>
           <p data-testid="signUpFormTextAndLink">
