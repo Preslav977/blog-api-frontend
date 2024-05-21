@@ -1,6 +1,6 @@
 import styles from "./SignUpFormComponent.module.css";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
   UserContext,
   EmailContext,
@@ -28,18 +28,10 @@ function SignUpFormComponent() {
     ConfirmPasswordContext,
   );
 
-  const [disableSignUpBtn, setDisableSignUpBtn] = useState(true);
-
   // eslint-disable-next-line no-useless-escape
   const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
 
-  function enableButtonIfNoErrors() {
-    if (email.match(emailRegex)) {
-      setDisableSignUpBtn(false);
-    }
-  }
-
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const FormDataObject = new FormData(e.target);
@@ -49,6 +41,15 @@ function SignUpFormComponent() {
     const userLastName = FormDataObject.get("last_name");
     const userPassword = FormDataObject.get("password");
     const userConfirmPassword = FormDataObject.get("confirm_password");
+
+    console.log(
+      userEmail,
+      userUsername,
+      userFirstName,
+      userLastName,
+      userPassword,
+      userConfirmPassword,
+    );
 
     const createUser = {
       ...userObject,
@@ -60,6 +61,28 @@ function SignUpFormComponent() {
       confirm_password: userConfirmPassword,
     };
     setUserObject(createUser);
+
+    try {
+      const response = await fetch("http://localhost:3000/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "same-origin",
+        body: JSON.stringify({
+          email: userEmail,
+          username: userUsername,
+          first_name: userFirstName,
+          last_name: userLastName,
+          password: userPassword,
+          confirm_password: userConfirmPassword,
+        }),
+      });
+      const result = await response.json();
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -73,12 +96,7 @@ function SignUpFormComponent() {
             <a className={styles.signUpFormLink}>Privacy Policy</a>
           </p>
         </div>
-        <form
-          action="http://localhost:3000/user/signup"
-          method="POST"
-          onSubmit={handleSubmit}
-          className={styles.signUpForm}
-        >
+        <form onSubmit={handleSubmit} className={styles.signUpForm}>
           <div className={styles.formContentWrapper}>
             <label htmlFor="email">Email:</label>
             <input
@@ -177,16 +195,13 @@ function SignUpFormComponent() {
             )}
           </div>
           <div className={styles.signUpButtonContainer}>
-            <Link to="/account/login">
-              <button
-                // disabled={disableSignUpBtn}
-                // onClick={enableButtonIfNoErrors}
-                className={styles.signUpButton}
-                type="submit"
-              >
-                Sign Up
-              </button>
-            </Link>
+            <button
+              href="/account/login"
+              className={styles.signUpButton}
+              type="submit"
+            >
+              Sign Up
+            </button>
           </div>
           <p data-testid="signUpFormTextAndLink">
             Already have an account?{" "}
