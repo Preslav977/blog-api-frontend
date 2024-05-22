@@ -10,31 +10,31 @@ function CommunityComponent() {
           <img
             data-testid="img"
             className={styles.socialMediaIcon}
-            src="./public/twitter.svg"
+            src="/twitter.svg"
             alt=""
           />
           <img
             data-testid="img"
             className={styles.socialMediaIcon}
-            src="./public/pinterest.svg"
+            src="/pinterest.svg"
             alt=""
           />
           <img
             data-testid="img"
             className={styles.socialMediaIcon}
-            src="./public/facebook.svg"
+            src="/facebook.svg"
             alt=""
           />
           <img
             data-testid="img"
             className={styles.socialMediaIcon}
-            src="./public/youtube.svg"
+            src="/youtube.svg"
             alt=""
           />
           <img
             data-testid="img"
             className={styles.socialMediaIcon}
-            src="./public/discord.svg"
+            src="/discord.svg"
             alt=""
           />
         </div>

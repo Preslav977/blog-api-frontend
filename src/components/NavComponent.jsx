@@ -19,7 +19,7 @@ function NavComponent() {
             Read
             <img
               className={styles.navSvgIcons}
-              src="./public/down-arrow.svg"
+              src="/down-arrow.svg"
               alt="down arrow dropdown"
             />
           </li>
@@ -36,7 +36,7 @@ function NavComponent() {
             </Link>
             <img
               className={styles.navSvgIcons}
-              src="./public/search.svg"
+              src="/search.svg"
               alt="search posts"
             />
           </div>
@@ -51,7 +51,7 @@ function NavComponent() {
             Read
             <img
               className={styles.navSvgIcons}
-              src="./public/up-arrow.svg"
+              src="/up-arrow.svg"
               alt="up arrow dropdown"
             />
           </li>
@@ -68,7 +68,7 @@ function NavComponent() {
             </Link>
             <img
               className={styles.navSvgIcons}
-              src="./public/search.svg"
+              src="/search.svg"
               alt="search posts"
             />
           </div>

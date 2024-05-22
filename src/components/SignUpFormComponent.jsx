@@ -1,6 +1,6 @@
 import styles from "./SignUpFormComponent.module.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   UserContext,
   EmailContext,
@@ -10,9 +10,14 @@ import {
   PasswordContext,
   ConfirmPasswordContext,
 } from "../App";
+import { Navigate } from "react-router-dom";
 
 function SignUpFormComponent() {
   const { userObject, setUserObject } = useContext(UserContext);
+
+  const [navigateToLogin, setNavigateToLogin] = useState({
+    success: null,
+  });
 
   const { email, setEmail } = useContext(EmailContext);
 
@@ -42,15 +47,6 @@ function SignUpFormComponent() {
     const userPassword = FormDataObject.get("password");
     const userConfirmPassword = FormDataObject.get("confirm_password");
 
-    console.log(
-      userEmail,
-      userUsername,
-      userFirstName,
-      userLastName,
-      userPassword,
-      userConfirmPassword,
-    );
-
     const createUser = {
       ...userObject,
       email: userEmail,
@@ -78,8 +74,29 @@ function SignUpFormComponent() {
           confirm_password: userConfirmPassword,
         }),
       });
+
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
+
+      if (result.message === "Successfully created user.") {
+        setNavigateToLogin({ ...navigateToLogin, success: true });
+        setEmail("");
+        setUsername("");
+        setFirstName("");
+        setLastName("");
+        setPassword("");
+        setConfirmPassword("");
+        setUserObject({
+          email: "",
+          username: "",
+          first_name: "",
+          last_name: "",
+          password: "",
+          confirm_password: "",
+        });
+      } else {
+        setNavigateToLogin({ ...navigateToLogin, success: null });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -113,6 +130,11 @@ function SignUpFormComponent() {
                 Email does not match required format
               </span>
             )}
+            {/* {navigateToLogin.success === null && (
+              <span className={styles.error}>
+                Username with that email exists
+              </span>
+            )} */}
           </div>
           <div className={styles.formContentWrapper}>
             <label htmlFor="username">Username:</label>
@@ -186,6 +208,7 @@ function SignUpFormComponent() {
             <input
               type="password"
               name="confirm_password"
+              minLength={8}
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
@@ -195,13 +218,10 @@ function SignUpFormComponent() {
             )}
           </div>
           <div className={styles.signUpButtonContainer}>
-            <button
-              href="/account/login"
-              className={styles.signUpButton}
-              type="submit"
-            >
+            <button className={styles.signUpButton} type="submit">
               Sign Up
             </button>
+            {navigateToLogin.success && <Navigate to="/account/login" />}
           </div>
           <p data-testid="signUpFormTextAndLink">
             Already have an account?{" "}
