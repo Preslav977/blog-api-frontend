@@ -1,6 +1,6 @@
 import styles from "./SignUpFormComponent.module.css";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
   UserContext,
   EmailContext,
@@ -10,14 +10,12 @@ import {
   PasswordContext,
   ConfirmPasswordContext,
 } from "../App";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function SignUpFormComponent() {
   const { userObject, setUserObject } = useContext(UserContext);
 
-  const [navigateToLogin, setNavigateToLogin] = useState({
-    success: null,
-  });
+  const navigate = useNavigate();
 
   const { email, setEmail } = useContext(EmailContext);
 
@@ -36,7 +34,7 @@ function SignUpFormComponent() {
   // eslint-disable-next-line no-useless-escape
   const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
 
-  async function handleSubmit(e) {
+  async function HandleSubmit(e) {
     e.preventDefault();
 
     const FormDataObject = new FormData(e.target);
@@ -76,10 +74,9 @@ function SignUpFormComponent() {
       });
 
       const result = await response.json();
-      // console.log(result);
+      console.log(result);
 
       if (result.message === "Successfully created user.") {
-        setNavigateToLogin({ ...navigateToLogin, success: true });
         setEmail("");
         setUsername("");
         setFirstName("");
@@ -94,8 +91,7 @@ function SignUpFormComponent() {
           password: "",
           confirm_password: "",
         });
-      } else {
-        setNavigateToLogin({ ...navigateToLogin, success: null });
+        navigate("/account/login");
       }
     } catch (err) {
       console.log(err);
@@ -113,7 +109,7 @@ function SignUpFormComponent() {
             <a className={styles.signUpFormLink}>Privacy Policy</a>
           </p>
         </div>
-        <form onSubmit={handleSubmit} className={styles.signUpForm}>
+        <form onSubmit={HandleSubmit} className={styles.signUpForm}>
           <div className={styles.formContentWrapper}>
             <label htmlFor="email">Email:</label>
             <input
@@ -221,7 +217,6 @@ function SignUpFormComponent() {
             <button className={styles.signUpButton} type="submit">
               Sign Up
             </button>
-            {navigateToLogin.success && <Navigate to="/account/login" />}
           </div>
           <p data-testid="signUpFormTextAndLink">
             Already have an account?{" "}
