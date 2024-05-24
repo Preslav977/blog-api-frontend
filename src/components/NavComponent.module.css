@@ -45,6 +45,11 @@
   align-items: center;
 }
 
+.loggedInUserSvg {
+  width: 1.5em;
+  margin-right: 0.8em;
+}
+
 .loginButton {
   padding: 0.4rem 0.8rem 0.4rem 0.8rem;
   margin-right: 1rem;
