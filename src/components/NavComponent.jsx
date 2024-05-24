@@ -2,10 +2,14 @@ import styles from "./NavComponent.module.css";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { PostContext } from "../App";
+import { IsUserLoggedContext } from "../App";
 
 function NavComponent() {
   const [navComponentDropDown, setNavComponentDropDrop] = useState(false);
   const [posts, setPosts] = useContext(PostContext);
+  const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
+
+  console.log(IsUserLogged);
 
   function toggleNavComponentDropDown() {
     setNavComponentDropDrop((navComponentDropDown) => !navComponentDropDown);

@@ -10,7 +10,11 @@ import {
   PasswordContext,
   ConfirmPasswordContext,
 } from "../App";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+export const emailRegex =
+  // eslint-disable-next-line no-useless-escape
+  /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
 
 function SignUpFormComponent() {
   const { userObject, setUserObject } = useContext(UserContext);
@@ -30,9 +34,6 @@ function SignUpFormComponent() {
   const { confirmPassword, setConfirmPassword } = useContext(
     ConfirmPasswordContext,
   );
-
-  // eslint-disable-next-line no-useless-escape
-  const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
 
   async function HandleSubmit(e) {
     e.preventDefault();
@@ -83,14 +84,6 @@ function SignUpFormComponent() {
         setLastName("");
         setPassword("");
         setConfirmPassword("");
-        setUserObject({
-          email: "",
-          username: "",
-          first_name: "",
-          last_name: "",
-          password: "",
-          confirm_password: "",
-        });
         navigate("/account/login");
       }
     } catch (err) {
