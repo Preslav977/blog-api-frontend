@@ -1,17 +1,18 @@
 import styles from "./LogInFormComponent.module.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-// import { UserContext } from "../App";
 import { EmailContext } from "../App";
 import { PasswordContext } from "../App";
 import { emailRegex } from "./SignUpFormComponent";
-import { IsUserLoggedContext } from "../App";
+import { IsUserLoggedContext, LoggedInUserInformationContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 function LogInFormComponent() {
-  // const { userObject, setUserObject } = useContext(UserContext);
-
   const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
+
+  const [loggedInUser, setLoggedInUser] = useContext(
+    LoggedInUserInformationContext,
+  );
 
   const { email, setEmail } = useContext(EmailContext);
 

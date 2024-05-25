@@ -6,6 +6,7 @@ import FetchPostsByCategory from "../api/FetchPostsByCategory";
 import FetchPostsByTags from "../api/FetchPostsByTags";
 import SignUpFormComponent from "../components/SignUpFormComponent";
 import LogInFormComponent from "../components/LogInFormComponent";
+import UserDashboardComponent from "../components/UserDashboardComponent";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/posts/tag/:name", element: <FetchPostsByTags /> },
       { path: "/account/signup", element: <SignUpFormComponent /> },
       { path: "/account/login", element: <LogInFormComponent /> },
+      { path: "/account", element: <UserDashboardComponent /> },
     ],
   },
 ]);

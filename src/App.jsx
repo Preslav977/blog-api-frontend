@@ -22,6 +22,8 @@ export const ConfirmPasswordContext = createContext(null);
 
 export const IsUserLoggedContext = createContext(null);
 
+export const LoggedInUserInformationContext = createContext(null);
+
 function App() {
   const [posts, setPosts] = useState([]);
 
@@ -33,6 +35,8 @@ function App() {
     password: "",
     confirm_password: "",
   });
+
+  const [loggedInUser, setLoggedInUser] = useState([]);
 
   const [IsUserLogged, setIsUserLogged] = useState(false);
 
@@ -50,28 +54,36 @@ function App() {
 
   return (
     <>
-      <IsUserLoggedContext.Provider value={[IsUserLogged, setIsUserLogged]}>
-        <PostContext.Provider value={[posts, setPosts]}>
-          <NavComponent />
-          <UserContext.Provider value={{ userObject, setUserObject }}>
-            <EmailContext.Provider value={{ email, setEmail }}>
-              <UsernameContext.Provider value={{ username, setUsername }}>
-                <FirstNameContext.Provider value={{ firstName, setFirstName }}>
-                  <LastNameContext.Provider value={{ lastName, setLastName }}>
-                    <PasswordContext.Provider value={{ password, setPassword }}>
-                      <ConfirmPasswordContext.Provider
-                        value={{ confirmPassword, setConfirmPassword }}
+      <LoggedInUserInformationContext.Provider
+        value={[loggedInUser, setLoggedInUser]}
+      >
+        <IsUserLoggedContext.Provider value={[IsUserLogged, setIsUserLogged]}>
+          <PostContext.Provider value={[posts, setPosts]}>
+            <NavComponent />
+            <UserContext.Provider value={{ userObject, setUserObject }}>
+              <EmailContext.Provider value={{ email, setEmail }}>
+                <UsernameContext.Provider value={{ username, setUsername }}>
+                  <FirstNameContext.Provider
+                    value={{ firstName, setFirstName }}
+                  >
+                    <LastNameContext.Provider value={{ lastName, setLastName }}>
+                      <PasswordContext.Provider
+                        value={{ password, setPassword }}
                       >
-                        <Outlet />
-                      </ConfirmPasswordContext.Provider>
-                    </PasswordContext.Provider>
-                  </LastNameContext.Provider>
-                </FirstNameContext.Provider>
-              </UsernameContext.Provider>
-            </EmailContext.Provider>
-          </UserContext.Provider>
-        </PostContext.Provider>
-      </IsUserLoggedContext.Provider>
+                        <ConfirmPasswordContext.Provider
+                          value={{ confirmPassword, setConfirmPassword }}
+                        >
+                          <Outlet />
+                        </ConfirmPasswordContext.Provider>
+                      </PasswordContext.Provider>
+                    </LastNameContext.Provider>
+                  </FirstNameContext.Provider>
+                </UsernameContext.Provider>
+              </EmailContext.Provider>
+            </UserContext.Provider>
+          </PostContext.Provider>
+        </IsUserLoggedContext.Provider>
+      </LoggedInUserInformationContext.Provider>
       <FooterComponent />
     </>
   );

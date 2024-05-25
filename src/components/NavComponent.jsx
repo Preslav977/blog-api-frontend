@@ -1,8 +1,7 @@
 import styles from "./NavComponent.module.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { PostContext } from "../App";
-import { IsUserLoggedContext } from "../App";
+import { PostContext, IsUserLoggedContext } from "../App";
 
 function NavComponent() {
   const [navComponentDropDown, setNavComponentDropDrop] = useState(false);
@@ -62,7 +61,7 @@ function NavComponent() {
                       <div>
                         <Link to="#">Create Post</Link>
                       </div>
-                      <Link href="">Account</Link>
+                      <Link to="/account">Account</Link>
                       <Link href="">Logout</Link>
                     </div>
                   </div>
