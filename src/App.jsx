@@ -2,6 +2,8 @@ import { useState, createContext } from "react";
 import "./index.css";
 import NavComponent from "./components/NavComponent";
 import FooterComponent from "./components/FooterComponent";
+import UserDashboardComponent from "./components/UserDashboardComponent";
+
 import { Outlet } from "react-router-dom";
 
 export const PostContext = createContext(null);
@@ -73,7 +75,8 @@ function App() {
                         <ConfirmPasswordContext.Provider
                           value={{ confirmPassword, setConfirmPassword }}
                         >
-                          <Outlet />
+                          {/* <Outlet /> */}
+                          <UserDashboardComponent />
                         </ConfirmPasswordContext.Provider>
                       </PasswordContext.Provider>
                     </LastNameContext.Provider>

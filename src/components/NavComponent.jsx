@@ -78,16 +78,15 @@ function NavComponent() {
                   ""
                 ) : (
                   <div className={styles.loggedInToggleDropDown}>
-                    <div className={styles.loggedInDropDownContent}>
-                      <div>
-                        <h3>some user</h3>
-                      </div>
-                      <div>
-                        <Link to="#">Create Post</Link>
-                      </div>
+                    <li>
+                      <Link to="/create">Create Post</Link>
+                    </li>
+                    <li>
                       <Link to="/account">Account</Link>
-                      <Link href="">Logout</Link>
-                    </div>
+                    </li>
+                    <li>
+                      <Link to="/logout">Logout</Link>
+                    </li>
                   </div>
                 )}
               </div>
