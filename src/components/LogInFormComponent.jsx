@@ -10,10 +10,6 @@ import { useNavigate } from "react-router-dom";
 function LogInFormComponent() {
   const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
 
-  const [loggedInUser, setLoggedInUser] = useContext(
-    LoggedInUserInformationContext,
-  );
-
   const { email, setEmail } = useContext(EmailContext);
 
   const { password, setPassword } = useContext(PasswordContext);
@@ -26,7 +22,6 @@ function LogInFormComponent() {
     try {
       const response = await fetch("http://localhost:3000/user/login", {
         method: "POST",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -40,7 +35,7 @@ function LogInFormComponent() {
 
       const bearerToken = ["Bearer", result.token];
 
-      localStorage.setItem("token", bearerToken);
+      localStorage.setItem("token", JSON.stringify(bearerToken));
 
       navigate("/");
 
