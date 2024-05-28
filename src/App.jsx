@@ -75,8 +75,7 @@ function App() {
                         <ConfirmPasswordContext.Provider
                           value={{ confirmPassword, setConfirmPassword }}
                         >
-                          {/* <Outlet /> */}
-                          <UserDashboardComponent />
+                          <Outlet />
                         </ConfirmPasswordContext.Provider>
                       </PasswordContext.Provider>
                     </LastNameContext.Provider>

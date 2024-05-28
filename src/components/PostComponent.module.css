@@ -45,3 +45,9 @@
   margin-top: 0.9em;
   margin-bottom: 0.15em;
 }
+
+@media screen and (max-width: 900px) {
+  .mainPagePostArticleContainer:nth-child(3) > a > .mainPagePostImg {
+    aspect-ratio: 11.5 / 8;
+  }
+}

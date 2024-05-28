@@ -7,11 +7,15 @@ function UserDashboardComponent() {
     LoggedInUserInformationContext,
   );
 
+  console.log(loggedInUser);
+
   return (
     <div className={styles.userDashboardWrapper}>
       <div className={styles.userDashboardContainer}>
         <div className={styles.greetingUserContainer}>
-          <h2 className={styles.greetingUser}>Welcome, Preslaw</h2>
+          <h2 className={styles.greetingUser}>
+            Welcome, {loggedInUser.first_name}
+          </h2>
           <p>Welcome to dashboard!</p>
           <p className={styles.userWarningParagraph}>
             Note: This page is under construction. Some features might not be
@@ -23,12 +27,14 @@ function UserDashboardComponent() {
           <div className={styles.userDashboardLeftContent}>
             <div className={styles.userContent}>
               <p className={styles.userLabel}>First Name:</p>
-              <p className={styles.userInformation}>Preslaw</p>
+              <p className={styles.userInformation}>
+                {loggedInUser.first_name}
+              </p>
               <a className={styles.userLink}>Change First Name</a>
             </div>
             <div>
               <p className={styles.userLabel}>Email:</p>
-              <p className={styles.userInformation}>Preslaw@test.com</p>
+              <p className={styles.userInformation}> {loggedInUser.email}</p>
               <a className={styles.userLink}>Change Email</a>
             </div>
             <div>
@@ -40,12 +46,15 @@ function UserDashboardComponent() {
           <div className={styles.userDashboardRightContent}>
             <div>
               <p className={styles.userLabel}>Last Name:</p>
-              <p className={styles.userInformation}>preslaw</p>
+              <p className={styles.userInformation}>
+                {" "}
+                {loggedInUser.last_name}
+              </p>
               <a className={styles.userLink}>Change Last Name</a>
             </div>
             <div>
               <p className={styles.userLabel}>Username:</p>
-              <p className={styles.userInformation}>preslaw</p>
+              <p className={styles.userInformation}> {loggedInUser.username}</p>
               <a className={styles.userLink}>Change Username</a>
             </div>
           </div>

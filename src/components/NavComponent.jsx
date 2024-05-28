@@ -68,12 +68,14 @@ function NavComponent() {
               </Link>
             ) : (
               <div className={styles.loggedUserContainer}>
-                <img
-                  onClick={toggleLoggedUserDropDrown}
-                  className={styles.loggedInUserSvg}
-                  src="/logged-in-user.svg"
-                  alt=""
-                />
+                <div className={styles.loggedUserImgContainer}>
+                  <img
+                    onClick={toggleLoggedUserDropDrown}
+                    className={styles.loggedInUserSvg}
+                    src="/bulgarian-flag-icon.jpeg"
+                    alt=""
+                  />
+                </div>
                 {!loggedInUserDropDown ? (
                   ""
                 ) : (
@@ -126,12 +128,29 @@ function NavComponent() {
               </Link>
             ) : (
               <div className={styles.loggedUserContainer}>
-                <img
-                  onClick={toggleLoggedUserDropDrown}
-                  className={styles.loggedInUserSvg}
-                  src="/logged-in-user.svg"
-                  alt=""
-                />
+                <div className={styles.loggedUserImgContainer}>
+                  <img
+                    onClick={toggleLoggedUserDropDrown}
+                    className={styles.loggedInUserSvg}
+                    src="/bulgarian-flag-icon.jpeg"
+                    alt=""
+                  />
+                </div>
+                {!loggedInUserDropDown ? (
+                  ""
+                ) : (
+                  <div className={styles.loggedInToggleDropDown}>
+                    <li>
+                      <Link to="/create">Create Post</Link>
+                    </li>
+                    <li>
+                      <Link to="/account">Account</Link>
+                    </li>
+                    <li>
+                      <Link to="/logout">Logout</Link>
+                    </li>
+                  </div>
+                )}
               </div>
             )}
             <img

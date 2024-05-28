@@ -48,14 +48,14 @@
 }
 
 .userInformation {
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
 .userLink {
   outline: 1px solid black;
   padding: 0.3em 0.8em;
   text-transform: uppercase;
-  margin-top: 1em;
+
   font-size: 0.8rem;
 }
 

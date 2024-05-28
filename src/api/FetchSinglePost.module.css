@@ -58,11 +58,65 @@
 
 .articleTags {
   display: flex;
-  /* flex-wrap: wrap; */
   gap: 1em;
 }
 
-.articleDetailedTagsContainer h3 {
+.articleDetailedTagsContainer h3,
+.articleCommentsContainer h3,
+.articleLogInUser {
   margin-bottom: 0.5em;
   text-align: center;
+}
+
+.articleCommentsContainer {
+  width: 80%;
+  margin-top: 2em;
+}
+
+.submitCommentTextArea {
+  width: 100%;
+  min-height: 50px;
+  max-height: 400px;
+  resize: vertical;
+  cursor: row-resize;
+}
+
+.submitBtnCommentContainer {
+  margin: 1em 0em;
+}
+
+.submitBtnComment {
+  background-color: gray;
+  color: white;
+  padding: 0.2em 0.5em;
+  border: none;
+  border-radius: 0.2em;
+}
+
+.articleComment {
+  border-left: 1px solid #9443e0;
+  border-bottom: 1px solid gray;
+  margin: 1.5em 0;
+}
+
+.articleUserNames {
+  margin-bottom: 0.2em;
+}
+
+.articleContent {
+  margin: 0.5em 0;
+}
+
+.articleLikeContainer {
+  display: flex;
+  margin-bottom: 0.5em;
+}
+
+.articleComment p,
+.articleLikeContainer {
+  margin-left: 0.8em;
+}
+
+.articleCommentLikeSvg {
+  width: 1em;
 }

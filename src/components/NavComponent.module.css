@@ -50,8 +50,11 @@
 }
 
 .loggedInUserSvg {
-  width: 1.5em;
+  width: 30px;
+  height: 30px;
   margin-right: 0.8em;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .loggedInToggleDropDown {
@@ -60,7 +63,7 @@
   max-width: 110px;
   padding: 1em;
   margin-top: 0.3em;
-  left: -100%;
+  left: -90%;
   outline: 2px solid black;
   width: 110px;
 }

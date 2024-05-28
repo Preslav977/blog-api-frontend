@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { EmailContext } from "../App";
 import { PasswordContext } from "../App";
 import { emailRegex } from "./SignUpFormComponent";
-import { IsUserLoggedContext, LoggedInUserInformationContext } from "../App";
+import { IsUserLoggedContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 function LogInFormComponent() {

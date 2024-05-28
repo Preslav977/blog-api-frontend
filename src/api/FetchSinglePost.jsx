@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./FetchSinglePost.module.css";
 import { Link } from "react-router-dom";
+import { IsUserLoggedContext } from "../App";
 
 function FetchSinglePost() {
   const [post, setPost] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
 
   const { id } = useParams();
 
@@ -21,10 +23,44 @@ function FetchSinglePost() {
       .then((response) => setPost(response))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
-  }, [id, setPost]);
+  });
 
   if (loading) return <p data-testid="loading">Loading....</p>;
   if (error) return <p>A network error was encountered</p>;
+
+  async function SubmitComment(e) {
+    e.preventDefault();
+
+    const FormDataObject = new FormData(e.target);
+
+    const comment = FormDataObject.get("content");
+
+    const addCommentToPost = {
+      ...post,
+      content: comment,
+    };
+
+    setPost(addCommentToPost);
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/posts/${id}/comments`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content: comment }),
+        },
+      );
+      const result = await response.json();
+
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <article className={styles.articleDetailedContainer}>
@@ -68,6 +104,54 @@ function FetchSinglePost() {
             </Link>
           ))}
         </div>
+      </div>
+      <div className={styles.articleCommentsContainer}>
+        <h3>Comments</h3>
+        {!IsUserLogged ? (
+          <p className={styles.articleLogInUser}>
+            You must be logged in to add a comment
+          </p>
+        ) : (
+          <>
+            <div>
+              <p className={styles.articleLogInUser}>
+                Comment on post &apos;{post.title}&apos;
+              </p>
+              <form onSubmit={SubmitComment}>
+                <label htmlFor="content"></label>
+                <textarea
+                  className={styles.submitCommentTextArea}
+                  name="content"
+                  id=""
+                  placeholder="Enter you comment here"
+                  required
+                ></textarea>
+                <div className={styles.submitBtnCommentContainer}>
+                  <button className={styles.submitBtnComment} type="submit">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </>
+        )}
+        {post.comments.map((postComments) => (
+          <div key={postComments._id} className={styles.articleComment}>
+            <p className={styles.articleUserNames}>
+              {postComments.user.first_name} {postComments.user.last_name}
+            </p>
+            <p>{postComments.date}</p>
+            <p className={styles.articleContent}>{postComments.content}</p>
+            <div className={styles.articleLikeContainer}>
+              <img
+                className={styles.articleCommentLikeSvg}
+                src="/like-comment.svg"
+                alt=""
+              />
+              <p className={styles.articleLike}>{postComments.like}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </article>
   );
