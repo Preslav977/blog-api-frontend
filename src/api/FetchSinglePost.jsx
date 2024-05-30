@@ -64,6 +64,36 @@ function FetchSinglePost() {
     }
   }
 
+  async function removeComment(postComments, event = "") {
+    console.log(postComments._id);
+
+    const removeComment = {
+      ...post,
+      comments: post.comments.filter((obj) => obj._id !== postComments._id),
+    };
+
+    setPost(removeComment);
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/posts/${id}/comment`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: postComments._id }),
+        },
+      );
+      const result = await response.json();
+
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <article className={styles.articleDetailedContainer}>
       <div className={styles.articleCategoryContainer}>
@@ -138,40 +168,44 @@ function FetchSinglePost() {
           </>
         )}
         {post.comments.map((postComments) => (
-          <div key={postComments._id} className={styles.articleComment}>
-            <p className={styles.articleUserNames}>
-              {postComments.user.first_name} {postComments.user.last_name}
-            </p>
-            <p>{postComments.date}</p>
-            <p className={styles.articleContent}>{postComments.content}</p>
-            <div className={styles.articleLikeContainer}>
-              <img
-                className={styles.articleCommentLikeSvg}
-                src="/like-comment.svg"
-                alt=""
-              />
-              <p className={styles.articleLike}>{postComments.like}</p>
-              {postComments.content ? (
-                <>
+          <div key={postComments._id}>
+            {!postComments.hidden ? (
+              <div className={styles.articleComment}>
+                <p className={styles.articleUserNames}>
+                  {postComments.user.first_name} {postComments.user.last_name}
+                </p>
+                <p>{postComments.date}</p>
+                <p className={styles.articleContent}>{postComments.content}</p>
+                <div className={styles.articleLikeContainer}>
                   <img
-                    onClick={() => {
-                      setPost(
-                        ...post,
-                        post.comments.filter(
-                          (obj) => obj._id !== postComments._id,
-                        ),
-                      );
-                    }}
                     className={styles.articleCommentLikeSvg}
-                    src="/trashcan.svg"
+                    src="/like-comment.svg"
                     alt=""
                   />
-                  <p>Delete</p>
-                </>
-              ) : (
-                ""
-              )}
-            </div>
+                  <p className={styles.articleLike}>{postComments.like}</p>
+                  {postComments.content ? (
+                    <>
+                      <img
+                        onClick={() => {
+                          removeComment(
+                            postComments,
+                            (event = event.preventDefault()),
+                          );
+                        }}
+                        className={styles.articleCommentLikeSvg}
+                        src="/trashcan.svg"
+                        alt=""
+                      />
+                      <p>Delete</p>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         ))}
       </div>
