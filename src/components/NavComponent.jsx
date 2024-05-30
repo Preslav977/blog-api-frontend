@@ -1,11 +1,7 @@
 import styles from "./NavComponent.module.css";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import {
-  PostContext,
-  IsUserLoggedContext,
-  LoggedInUserInformationContext,
-} from "../App";
+import { PostContext, IsUserLoggedContext } from "../App";
 
 function NavComponent() {
   const [navComponentDropDown, setNavComponentDropDrop] = useState(false);
@@ -13,26 +9,6 @@ function NavComponent() {
   const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
 
   const [loggedInUserDropDown, setLoggedInUserDropDown] = useState(false);
-
-  const [loggedInUser, setLoggedInUser] = useContext(
-    LoggedInUserInformationContext,
-  );
-
-  useEffect(() => {
-    fetch("http://localhost:3000/user", {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-      mode: "cors",
-    })
-      .then((response) => {
-        if (response.status >= 400) {
-          throw new Error("Server Error");
-        }
-        return response.json();
-      })
-      .then((response) => setLoggedInUser(response));
-  }, [setLoggedInUser]);
 
   function toggleNavComponentDropDown() {
     setNavComponentDropDrop((navComponentDropDown) => !navComponentDropDown);

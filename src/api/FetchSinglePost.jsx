@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { IsUserLoggedContext } from "../App";
 
 function FetchSinglePost() {
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
@@ -23,17 +23,19 @@ function FetchSinglePost() {
       .then((response) => setPost(response))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
-  });
+  }, [id]);
 
   if (loading) return <p data-testid="loading">Loading....</p>;
   if (error) return <p>A network error was encountered</p>;
 
-  async function SubmitComment(e) {
+  async function submitComment(e) {
     e.preventDefault();
 
     const FormDataObject = new FormData(e.target);
 
     const comment = FormDataObject.get("content");
+
+    console.log(comment);
 
     const addCommentToPost = {
       ...post,
@@ -117,7 +119,7 @@ function FetchSinglePost() {
               <p className={styles.articleLogInUser}>
                 Comment on post &apos;{post.title}&apos;
               </p>
-              <form onSubmit={SubmitComment}>
+              <form onSubmit={submitComment}>
                 <label htmlFor="content"></label>
                 <textarea
                   className={styles.submitCommentTextArea}
@@ -149,6 +151,26 @@ function FetchSinglePost() {
                 alt=""
               />
               <p className={styles.articleLike}>{postComments.like}</p>
+              {postComments.content ? (
+                <>
+                  <img
+                    onClick={() => {
+                      setPost(
+                        ...post,
+                        post.comments.filter(
+                          (obj) => obj._id !== postComments._id,
+                        ),
+                      );
+                    }}
+                    className={styles.articleCommentLikeSvg}
+                    src="/trashcan.svg"
+                    alt=""
+                  />
+                  <p>Delete</p>
+                </>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         ))}

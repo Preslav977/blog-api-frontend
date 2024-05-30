@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LoggedInUserInformationContext } from "../App";
 import styles from "./UserDashboardComponent.module.css";
 
@@ -6,8 +6,29 @@ function UserDashboardComponent() {
   const [loggedInUser, setLoggedInUser] = useContext(
     LoggedInUserInformationContext,
   );
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  console.log(loggedInUser);
+  useEffect(() => {
+    fetch("http://localhost:3000/user", {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      mode: "cors",
+    })
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Server Error");
+        }
+        return response.json();
+      })
+      .then((response) => setLoggedInUser(response))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, [setLoggedInUser]);
+
+  if (loading) return <p data-testid="loading">Loading....</p>;
+  if (error) return <p>A network error was encountered</p>;
 
   return (
     <div className={styles.userDashboardWrapper}>
