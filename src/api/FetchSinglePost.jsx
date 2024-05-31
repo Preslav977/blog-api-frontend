@@ -1,14 +1,20 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./FetchSinglePost.module.css";
 import { Link } from "react-router-dom";
-import { IsUserLoggedContext } from "../App";
+import { IsUserLoggedContext, LoggedInUserInformationContext } from "../App";
 
 function FetchSinglePost() {
   const [post, setPost] = useState();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
+
+  const [loggedInUser, setLoggedInUser] = useContext(
+    LoggedInUserInformationContext,
+  );
+
+  const formRef = useRef();
 
   const { id } = useParams();
 
@@ -35,14 +41,14 @@ function FetchSinglePost() {
 
     const comment = FormDataObject.get("content");
 
-    console.log(comment);
-
     const addCommentToPost = {
       ...post,
       content: comment,
     };
 
     setPost(addCommentToPost);
+
+    formRef.current.reset();
 
     try {
       const response = await fetch(
@@ -64,9 +70,7 @@ function FetchSinglePost() {
     }
   }
 
-  async function removeComment(postComments, event = "") {
-    console.log(postComments._id);
-
+  async function removeComment(postComments) {
     const removeComment = {
       ...post,
       comments: post.comments.filter((obj) => obj._id !== postComments._id),
@@ -122,7 +126,6 @@ function FetchSinglePost() {
       <div className={styles.articleDetailedDescriptionContainer}>
         <p data-testid="postBody">{post.body}</p>
       </div>
-
       <div className={styles.articleDetailedTagsContainer}>
         <h3>Tags</h3>
         <div className={styles.articleTags}>
@@ -149,7 +152,7 @@ function FetchSinglePost() {
               <p className={styles.articleLogInUser}>
                 Comment on post &apos;{post.title}&apos;
               </p>
-              <form onSubmit={submitComment}>
+              <form ref={formRef} onSubmit={submitComment}>
                 <label htmlFor="content"></label>
                 <textarea
                   className={styles.submitCommentTextArea}
@@ -177,20 +180,26 @@ function FetchSinglePost() {
                 <p>{postComments.date}</p>
                 <p className={styles.articleContent}>{postComments.content}</p>
                 <div className={styles.articleLikeContainer}>
-                  <img
-                    className={styles.articleCommentLikeSvg}
-                    src="/like-comment.svg"
-                    alt=""
-                  />
-                  <p className={styles.articleLike}>{postComments.like}</p>
-                  {postComments.content ? (
+                  {/* {!postComments.like > 0 ? (
+                    <img
+                      className={styles.articleCommentLikeSvg}
+                      src="/like-comment.svg"
+                      alt=""
+                    />
+                  ) : (
+                    <img
+                      className={styles.articleCommentLikeSvg}
+                      src="/liked-comment.svg"
+                      alt=""
+                    />
+                  )} */}
+                  {/* <p className={styles.articleLike}>{postComments.like}</p> */}
+                  {loggedInUser._id === postComments.user._id ? (
                     <>
                       <img
                         onClick={() => {
-                          removeComment(
-                            postComments,
-                            (event = event.preventDefault()),
-                          );
+                          (e) => e.preventDefault();
+                          removeComment(postComments);
                         }}
                         className={styles.articleCommentLikeSvg}
                         src="/trashcan.svg"

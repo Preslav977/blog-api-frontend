@@ -1,10 +1,10 @@
 import styles from "./LogInFormComponent.module.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { EmailContext } from "../App";
 import { PasswordContext } from "../App";
 import { emailRegex } from "./SignUpFormComponent";
-import { IsUserLoggedContext } from "../App";
+import { IsUserLoggedContext, LoggedInUserInformationContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 function LogInFormComponent() {
@@ -15,6 +15,34 @@ function LogInFormComponent() {
   const { password, setPassword } = useContext(PasswordContext);
 
   const navigate = useNavigate();
+
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const [loggedInUser, setLoggedInUser] = useContext(
+    LoggedInUserInformationContext,
+  );
+
+  useEffect(() => {
+    fetch("http://localhost:3000/user", {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+      mode: "cors",
+    })
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Server Error");
+        }
+        return response.json();
+      })
+      .then((response) => setLoggedInUser(response))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, [setLoggedInUser]);
+
+  if (loading) return <p data-testid="loading">Loading....</p>;
+  if (error) return <p>A network error was encountered</p>;
 
   async function HandleLogin(e) {
     e.preventDefault();
