@@ -35,8 +35,8 @@
 
 .navMainPage {
   letter-spacing: 0.3em;
-  font-size: 1.25em;
-  margin-left: 2.2em;
+  font-size: 1.125rem;
+  margin-left: 2.5em;
   text-transform: uppercase;
 }
 
@@ -74,7 +74,7 @@
 
 .loginButton {
   padding: 0.4rem 0.8rem 0.4rem 0.8rem;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   background-color: #9443e0;
   color: #fff;
   border-radius: 0.1rem;
@@ -138,5 +138,11 @@
 
   .navPostDescription {
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 390px) {
+  .loginButton {
+    margin-left: 0.5rem;
   }
 }

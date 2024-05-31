@@ -41,8 +41,8 @@ function LogInFormComponent() {
       .finally(() => setLoading(false));
   }, [setLoggedInUser]);
 
-  if (loading) return <p data-testid="loading">Loading....</p>;
-  if (error) return <p>A network error was encountered</p>;
+  // if (loading) return <p data-testid="loading">Loading....</p>;
+  // if (error) return <p>A network error was encountered</p>;
 
   async function HandleLogin(e) {
     e.preventDefault();

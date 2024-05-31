@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: var(--max-width-page);
+  max-width: 1250px;
   margin: 0 auto;
   gap: 1.5em;
   padding: var(--padding-content);
@@ -50,7 +50,7 @@
 
 .articleDetailedTagsContainer p {
   outline: 1.5px solid black;
-  padding: 0.2em 0.15em 0.2em 0.15em;
+  padding: 0.2em 0.18em 0.2em 0.18em;
   box-shadow: -5px 5px 5px black;
   text-transform: capitalize;
   background-color: white;
@@ -58,6 +58,9 @@
 
 .articleTags {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 1em;
 }
 
