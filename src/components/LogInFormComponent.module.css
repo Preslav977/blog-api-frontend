@@ -1,5 +1,8 @@
 .logInFormWrapper {
-  min-height: 75vh;
+  min-height: var(--login-form-min-height);
+  max-width: var(--max-width-page);
+  margin: var(--margin-default);
+  padding: var(--logged-in-dropdown-background-padding);
 }
 
 .logInFormContainer {
@@ -7,7 +10,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2.5em;
+  margin-top: var(--login-form-margin-top);
 }
 
 .logInFormPolicyContent {
@@ -15,38 +18,45 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2em;
+  margin-bottom: var(--featured-tags-margin-bottom);
 }
 
 .logInForm {
   display: flex;
   flex-direction: column;
-  width: 500px;
-  margin: 0 auto;
+  max-width: var(--login-form-width);
+  width: var(--grid-image-width);
+  margin: var(--margin-default);
 }
 
 a.logInFormLink {
-  color: #9443e0;
+  color: var(--login-form-link-color);
 }
 
 .formContentWrapper {
-  margin-bottom: 1em;
+  margin-bottom: var(--form-content-margin-bottom);
 }
 
 .error {
-  margin-top: 0.3em;
-  color: #c20f0f;
-  font-size: 0.8rem;
+  margin-top: var(--error-span-margin-top);
+  color: var(--error-span-color);
+  font-size: var(--error-span-font-size);
 }
 
 .logInButtonContainer {
-  margin-bottom: 1em;
+  margin-bottom: var(--form-content-margin-bottom);
 }
 
 .logInButton {
-  padding: 0.5em 1.5em;
-  background-color: #423c3a83;
+  padding: var(--login-button-padding);
+  background-color: var(--login-button-background-color);
   border: 0;
-  color: white;
-  font-size: 1em;
+  color: var(--author-link-color);
+  font-size: var(--login-button-font-size);
+}
+
+@media screen and (max-width: 450px) {
+  .logInFormPolicyContent {
+    text-align: center;
+  }
 }

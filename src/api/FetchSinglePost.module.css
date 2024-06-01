@@ -3,57 +3,57 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 1250px;
-  margin: 0 auto;
-  gap: 1.5em;
+  max-width: var(--max-width-content);
+  margin: var(--margin-default);
+  gap: var(--flex-gap);
   padding: var(--padding-content);
 }
 
 .articleCategoryContainer {
-  margin-top: 2em;
+  margin-top: var(--article-category-margin-top);
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: var(--article-category-width);
 }
 
 .articleCategory {
-  outline: 1.5px solid black;
-  padding: 0.3em 1em 0.3em 1em;
-  box-shadow: -5px 5px 5px black;
-  text-transform: uppercase;
-  background-color: white;
-  text-decoration: none;
-  color: black;
+  outline: var(--article-category-outline);
+  padding: var(--article-category-padding);
+  box-shadow: var(--article-category-box-shadow);
+  text-transform: var(--article-category-text-transform);
+  background-color: var(--article-category-background-color);
+  text-decoration: var(--article-category-text-decoration);
+  color: var(--article-category-color);
 }
 
 .articleCategory:visited {
-  color: black;
+  color: var(--article-category-color);
 }
 
 .articleAuthorAndDateContainer {
   display: flex;
-  gap: 0.3em;
+  gap: var(--article-author-date-container-gap);
 }
 
 .articleDetailedImageContainer {
-  width: 100%;
+  width: var(--article-detailed-image-container-width);
 }
 
 .articleAuthorInformation h2 {
-  margin-bottom: 0.5em;
+  margin-bottom: var(--article-author-information-margin-bottom);
   text-align: center;
 }
 
 .articleDetailedDescriptionContainer {
-  line-height: 1.5em;
+  line-height: var(--article-detailed-description-line-height);
 }
 
 .articleDetailedTagsContainer p {
-  outline: 1.5px solid black;
-  padding: 0.2em 0.18em 0.2em 0.18em;
-  box-shadow: -5px 5px 5px black;
-  text-transform: capitalize;
-  background-color: white;
+  outline: var(--article-category-outline);
+  padding: var(--article-detailed-tags-padding);
+  box-shadow: var(--article-category-box-shadow);
+  text-transform: var(--article-detailed-tags-text-transform);
+  background-color: var(--article-category-background-color);
 }
 
 .articleTags {
@@ -61,66 +61,67 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: var(--article-tags-flex-gap);
 }
 
 .articleDetailedTagsContainer h3,
 .articleCommentsContainer h3,
 .articleLogInUser {
-  margin-bottom: 0.5em;
+  margin-bottom: var(--article-author-information-margin-bottom);
   text-align: center;
 }
 
 .articleCommentsContainer {
-  width: 80%;
-  margin-top: 2em;
+  width: var(--article-comments-width);
+  margin-top: var(--article-category-margin-top);
 }
 
 .submitCommentTextArea {
-  width: 100%;
-  min-height: 50px;
-  max-height: 400px;
+  width: var(--submit-comment-textarea-width);
+  min-height: var(--submit-comment-min-height);
+  max-height: var(--submit-comment-max-height);
   resize: vertical;
   cursor: row-resize;
 }
 
 .submitBtnCommentContainer {
-  margin: 1em 0em;
+  margin: var(--submit-btn-margin);
 }
 
 .submitBtnComment {
-  background-color: gray;
-  color: white;
-  padding: 0.2em 0.5em;
+  background-color: var(--submit-btn-background-color);
+  color: var(--article-category-background-color);
+  padding: var(--submit-btn-padding);
   border: none;
-  border-radius: 0.2em;
+  border-radius: var(--submit-btn-border-radius);
 }
 
 .articleComment {
-  border-left: 1px solid #9443e0;
-  border-bottom: 1px solid gray;
-  margin: 1.5em 0;
+  border-left: var(--article-comment-border-left);
+  border-bottom: var(--article-comment-border-bottom);
+  margin: var(--article-comment-margin);
 }
 
 .articleComment > p,
 .articleLikeContainer {
-  margin-left: 0.8em;
+  margin-left: var(--article-comment-margin-left);
 }
 
 .articleUserNames {
-  margin-bottom: 0.2em;
+  margin-bottom: var(--article-user-names-margin-bottom);
 }
 
 .articleContent {
-  margin: 0.5em 0;
+  margin: var(--article-content-margin);
 }
 
 .articleLikeContainer {
   display: flex;
-  margin-bottom: 0.5em;
-  gap: 0.3em;
+  margin-bottom: var(--article-author-information-margin-bottom);
+  gap: var(--article-like-gap);
 }
 
 .articleCommentLikeSvg {
-  width: 1em;
+  height: var(--article-like-svg-height);
+  width: var(--article-like-svg-width);
 }

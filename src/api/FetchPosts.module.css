@@ -1,10 +1,10 @@
 .postContainerGrid {
   max-width: var(--max-width-content);
-  margin: 0 auto;
+  margin: var(--margin-default);
   padding: var(--padding-content);
   display: grid;
-  grid-auto-columns: 1fr;
-  gap: 1.5em;
+  grid-auto-columns: var(--grid-auto-columns);
+  gap: var(--grid-gap);
   grid-template-areas:
     "firstPost"
     "secondPost"
@@ -31,11 +31,11 @@
 
 .homeSectionPosts {
   max-width: var(--max-width-content);
-  margin: 0 auto;
+  margin: var(--margin-default);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5em;
+  gap: var(--grid-gap);
   padding: var(--padding-content);
-  margin-bottom: 1.5em;
+  margin-bottom: var(--margin-bottom-posts);
 }

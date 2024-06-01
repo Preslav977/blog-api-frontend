@@ -1,5 +1,8 @@
 .signUpFormWrapper {
-  min-height: 75vh;
+  min-height: var(--login-form-min-height);
+  max-width: var(--max-width-page);
+  margin: var(--margin-default);
+  padding: var(--logged-in-dropdown-background-padding);
 }
 
 .signUpFormContainer {
@@ -7,7 +10,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2em;
+  margin-top: var(--article-category-margin-top);
 }
 
 .signUpFormPolicyContent {
@@ -15,50 +18,51 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2em;
+  margin-bottom: var(--sign-up-form-policy-margin-bottom);
 }
 
 .signUpFormWelcome {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--nav-post-image-margin-bottom);
 }
 
 .privacyContent {
-  width: 80%;
+  width: var(--article-comments-width);
   text-align: center;
 }
 
 a.signUpFormLink {
-  color: #9443e0;
+  color: var(--login-form-link-color);
 }
 
 .signUpForm {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  max-width: var(--login-form-width);
+  width: var(--grid-image-width);
 }
 
 .formContentWrapper {
-  margin-bottom: 1em;
+  margin-bottom: var(--form-content-margin-bottom);
 }
 
 input {
-  padding: 0.5em;
-  width: 100%;
+  padding: var(--input-padding);
+  width: var(--grid-image-width);
 }
 
 .error {
-  margin-top: 0.3em;
-  color: #c20f0f;
-  font-size: 0.8rem;
+  margin-top: var(--error-span-margin-top);
+  color: var(--error-span-color);
+  font-size: var(--error-span-font-size);
 }
 
 .signUpButtonContainer {
-  margin-bottom: 1em;
+  margin-bottom: var(--form-content-margin-bottom);
 }
 
 .signUpButton {
-  padding: 0.5em 1.5em;
-  background-color: #423c3a83;
+  padding: var(--login-button-padding);
+  background-color: var(--login-button-background-color);
   border: 0;
-  color: white;
+  color: var(--author-link-color);
 }

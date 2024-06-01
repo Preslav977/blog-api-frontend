@@ -1,31 +1,33 @@
 .featuredTagsContainer {
   display: flex;
   flex-direction: column;
-  padding: 2em 2em;
+  padding: var(--featured-tags-padding);
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background-color: #e6e6e6;
-  gap: 1.2rem;
-  margin-bottom: 2em;
+  background-color: var(--featured-tags-background-color);
+  gap: var(--author-content-gap);
+  margin-bottom: var(--featured-tags-margin-bottom);
 }
 
 .featuredTags {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2em;
+  align-items: center;
+  justify-content: center;
+  gap: var(--featured-tags-gap);
 }
 
 .featuredTags > a {
-  outline: 1.5px solid black;
-  padding: 0.2em 0.15em 0.2em 0.15em;
-  box-shadow: -5px 5px 5px black;
-  text-transform: uppercase;
-  background-color: white;
-  text-decoration: none;
-  color: black;
+  outline: var(--article-category-outline);
+  padding: var(--image-owner-padding);
+  box-shadow: var(--article-category-box-shadow);
+  text-transform: var(--article-category-text-transform);
+  background-color: var(--article-category-background-color);
+  text-decoration: var(--article-category-text-decoration);
+  color: var(--article-category-color);
 }
 
 .featuredTags > a:visited {
-  color: black;
+  color: var(--article-category-color);
 }

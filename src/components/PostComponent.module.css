@@ -19,12 +19,12 @@
 }
 
 .mainPagePostImg {
-  aspect-ratio: 11.5 / 8;
+  aspect-ratio: var(--author-section-image-aspect-ratio);
 }
 
 .mainPagePostArticleContainer:nth-child(3) > a > .mainPagePostImg {
-  aspect-ratio: 9 / 14;
-  object-fit: cover;
+  aspect-ratio: var(--main-page-post-image-aspect-ratio);
+  object-fit: var(--author-section-image-object-fit);
 }
 
 .mainPagePostCategoryContainer {
@@ -42,12 +42,12 @@
 }
 
 .mainPagePostBody > a > h2 {
-  margin-top: 0.9em;
-  margin-bottom: 0.15em;
+  margin-top: var(--main-page-post-body-margin-top);
+  margin-bottom: var(--main-page-post-body-margin-bottom);
 }
 
 @media screen and (max-width: 900px) {
   .mainPagePostArticleContainer:nth-child(3) > a > .mainPagePostImg {
-    aspect-ratio: 11.5 / 8;
+    aspect-ratio: var(--author-section-image-aspect-ratio);
   }
 }

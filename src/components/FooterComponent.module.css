@@ -1,25 +1,24 @@
 .footerWrapper {
-  padding: 3em 3em;
-  background-color: #090909;
-  color: #fff;
-  margin-top: 2em;
+  padding: var(--footer-padding);
+  background-color: var(--footer-background-color);
+  color: var(--author-link-color);
+  margin-top: var(--article-category-margin-top);
 }
 
 .footerContainer {
   max-width: var(--max-width-sub-content);
-  margin: 0 auto;
+  margin: var(--margin-default);
   display: flex;
-  gap: 1.2em;
+  gap: var(--featured-tags-gap);
 }
 
 .footerContent {
-  width: 50%;
+  width: var(--footer-content-width);
 }
 
 .footerRightSide {
   display: flex;
-  /* gap: 2.5em; */
-  gap: 2rem;
+  gap: var(--footer-right-side-gap);
 }
 
 @media screen and (max-width: 700px) {

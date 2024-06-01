@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { PostContext } from "../App";
-import { Link } from "react-router-dom";
 import FlexedPostComponent from "../components/FlexedPostComponent";
 
 function FetchPostsByTags() {

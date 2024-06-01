@@ -1,12 +1,12 @@
 .userDashboardWrapper {
-  min-height: 75vh;
+  min-height: var(--login-form-min-height);
 }
 
 .userDashboardContainer {
   max-width: var(--max-width-page);
-  margin: 0 auto;
+  margin: var(--margin-default);
   padding: var(--padding-content);
-  margin-top: 2.5em;
+  margin-top: var(--login-form-margin-top);
 }
 
 .greetingUserContainer {
@@ -14,16 +14,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
+  gap: var(--greeting-user-gap);
 }
 
 .userWarningParagraph {
-  width: 45%;
+  width: var(--user-warning-width);
   text-align: center;
 }
 
 .userInformationHeader {
-  margin-bottom: 1em;
+  margin-top: 1.5em;
+  margin-bottom: var(--form-content-margin-bottom);
 }
 
 .userDashboardContent {
@@ -33,33 +34,38 @@
 .userDashboardLeftContent {
   display: flex;
   flex-direction: column;
-  gap: 2em;
-  margin-right: 7em;
+  gap: var(--user-dashboard-left-gap);
+  margin-right: var(--user-dashboard-left-margin-right);
 }
 
 .userDashboardRightContent {
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: var(--user-dashboard-left-gap);
 }
 
 .userLabel {
-  line-height: 1.5;
+  line-height: var(--user-label-line-height);
 }
 
 .userInformation {
-  margin-bottom: 1em;
+  margin-bottom: var(--form-content-margin-bottom);
 }
 
 .userLink {
   outline: 1px solid black;
-  padding: 0.3em 0.8em;
-  text-transform: uppercase;
-
-  font-size: 0.8rem;
+  padding: var(--attention-authors-padding);
+  text-transform: var(--article-category-text-transform);
+  font-size: var(--error-span-font-size);
 }
 
 .userLink:hover {
-  background-color: #353535;
-  color: #fff;
+  background-color: var(--author-link-background-color);
+  color: var(--author-link-color);
+}
+
+@media screen and (max-width: 470px) {
+  .userLink {
+    font-size: 0.6rem;
+  }
 }

@@ -1,7 +1,7 @@
 .navContent {
   max-width: var(--max-width-page);
-  margin: 0 auto;
-  padding: 1rem;
+  margin: var(--margin-default);
+  padding: var(--nav-content-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,35 +9,35 @@
 }
 
 .whiteBackground {
-  color: #e2dfd2;
+  color: var(--left-span-background-color);
 }
 
 .redBackground {
-  color: red;
+  color: var(--middle-span-background-color);
 }
 
 .greenBackground {
-  color: green;
+  color: var(--right-span-background-color);
 }
 
 .navComponentSvgIcons {
-  width: 1.2em;
+  width: var(--nav-component-svg-width);
 }
 
 .navSvgIcons:first-child {
-  margin-left: 0.3em;
-  width: 0.8em;
+  margin-left: var(-nav-svg-icons-margin-left);
+  width: var(--nav-svg-icons-width);
 }
 
 .navSvgIcons:nth-child(2) {
-  width: 1.4em;
+  width: var(--nav-svg-icons-second-child-width);
 }
 
 .navMainPage {
-  letter-spacing: 0.3em;
-  font-size: 1.125rem;
-  margin-left: 2.5em;
-  text-transform: uppercase;
+  letter-spacing: var(--nav-main-page-letter-spacing);
+  font-size: var(--nav-main-page-font-size);
+  margin-left: var(--nav-main-page-margin-left);
+  text-transform: var(--article-category-text-transform);
 }
 
 .navRightSideContent {
@@ -50,34 +50,36 @@
 }
 
 .loggedInUserSvg {
-  width: 30px;
-  height: 30px;
-  margin-right: 0.8em;
-  border-radius: 50%;
-  object-fit: cover;
+  width: var(--logged-in-user-svg-width);
+  height: var(--logged-in-user-svg-height);
+  margin-right: var(--logged-in-user-margin-right);
+  margin-left: var(--logged-in-user-margin-left);
+  border-radius: var(--logged-in-user-border-radius);
+  object-fit: var(--grid-image-object-fit);
 }
 
 .loggedInToggleDropDown {
-  position: absolute;
-  background-color: #f3f3f3;
-  max-width: 110px;
-  padding: 1em;
-  margin-top: 0.3em;
-  left: -90%;
+  position: var(--image-owner-position);
+  background-color: var(--logged-in-dropdown-background-color);
+  max-width: var(--logged-in-dropdown-background-max-width);
+  padding: var(--logged-in-dropdown-background-padding);
+  margin-top: var(--error-span-margin-top);
+  left: var(--logged-in-dropdown-background-left);
   outline: 2px solid black;
-  width: 110px;
+  width: var(--logged-in-dropdown-background-width);
 }
 
 .loggedInToggleDropDown li {
-  font-size: 13px;
+  font-size: var(--logged-in-dropdown-font-size);
+  text-align: center;
 }
 
 .loginButton {
-  padding: 0.4rem 0.8rem 0.4rem 0.8rem;
-  margin-right: 0.5rem;
-  background-color: #9443e0;
-  color: #fff;
-  border-radius: 0.1rem;
+  padding: var(--login-button-padding);
+  margin-right: var(--login-button-margin-right);
+  background-color: var(--login-form-link-color);
+  color: var(--author-link-color);
+  border-radius: var(--login-button-border-radius);
   border: 0;
 }
 
@@ -86,27 +88,27 @@
 }
 
 .navMenuWrapper {
-  width: 100%;
-  position: absolute;
+  width: var(--grid-image-width);
+  position: var(--image-owner-position);
   z-index: 1;
 }
 
 .navMenuContainer {
-  background-color: #e6e6e6;
+  background-color: var(--featured-tags-background-color);
 }
 
 .navMenuContent {
   max-width: var(--max-width-page);
   margin-inline: auto;
-  padding: 1rem;
+  padding: var(--nav-content-padding);
   display: flex;
   align-items: flex-start;
-  gap: 1.5em;
+  gap: var(--flex-gap);
 }
 
 .navigationLinks {
   display: flex;
-  gap: 1rem;
+  gap: var(--nav-menu-content-gap);
   flex-direction: column;
 }
 
@@ -116,16 +118,16 @@
 }
 
 .navPostImgContainer {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--nav-post-image-margin-bottom);
 }
 
 .navPostImg {
-  max-height: 130px;
-  object-fit: cover;
+  max-height: var(--nav-post-image-min-height);
+  object-fit: var(--grid-image-object-fit);
 }
 
 .navPostDescription {
-  margin-left: 1rem;
+  margin-left: var(--nav-post-description-margin-left);
 }
 
 @media screen and (max-width: 900px) {
@@ -133,7 +135,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--nav-post-image-margin-bottom);
   }
 
   .navPostDescription {
@@ -143,6 +145,6 @@
 
 @media screen and (min-width: 390px) {
   .loginButton {
-    margin-left: 0.5rem;
+    margin-left: var(--login-button-margin-left);
   }
 }

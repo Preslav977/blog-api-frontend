@@ -1,58 +1,58 @@
 .mainCommunitySection {
   max-width: var(--max-width-content);
-  margin: 0 auto;
+  margin: var(--margin-default);
   padding: var(--padding-content);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5em;
-  margin-bottom: 1.5em;
-  margin-top: 2em;
+  gap: var(--main-community-gap);
+  margin-bottom: var(--main-section-margin-bottom);
+  margin-top: var(--article-category-margin-top);
 }
 
 .socialMediaIconsContainer {
   display: flex;
-  gap: 1.2em;
+  gap: var(--author-content-gap);
 }
 
 .socialMediaIcon {
-  width: 30px;
+  width: var(--social-media-icon-width);
 }
 
 .secondaryCommunitySection {
   max-width: var(--max-width-content);
-  margin: 0 auto;
+  margin: var(--margin-default);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: var(--padding-content);
-  gap: 1.5em;
+  gap: var(--grid-gap);
 }
 
 .gridImageContainer > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: var(--grid-image-width);
+  height: var(--grid-image-height);
+  object-fit: var(--grid-image-object-fit);
 }
 
 .gridImageContainer:nth-child(1) {
-  grid-row: 1 / 2 span;
+  grid-row: var(--grid-image-span);
 }
 
 .imageOwner {
-  position: absolute;
-  background-color: #fff;
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  outline: 1.5px solid black;
-  padding: 0.2em 0.15em 0.2em 0.15em;
-  box-shadow: -5px 5px 5px black;
-  text-transform: capitalize;
+  position: var(--image-owner-position);
+  background-color: var(--article-category-background-color);
+  margin-top: var(--image-owner-margin-top);
+  margin-left: var(--image-owner-margin-left);
+  outline: var(--article-category-outline);
+  padding: var(--image-owner-padding);
+  box-shadow: var(--article-category-box-shadow);
+  text-transform: var(--article-detailed-tags-text-transform);
 }
 
 @media screen and (max-width: 900px) {
   .gridImageContainer:nth-child(1) {
-    aspect-ratio: 11.5 / 9;
+    aspect-ratio: var(--grid-image-aspect-ratio);
   }
 
   .secondaryCommunitySection {

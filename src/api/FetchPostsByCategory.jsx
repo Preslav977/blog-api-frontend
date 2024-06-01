@@ -9,8 +9,6 @@ function FetchPostsByCategory() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(posts);
-
   const { id } = useParams();
 
   useEffect(() => {
