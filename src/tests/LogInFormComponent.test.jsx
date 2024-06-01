@@ -1,18 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { describe, expect } from "vitest";
-import LogInFormComponent from "../components/LogInFormComponent";
+
+import routes from "../router/routes";
 
 describe("should render LogInFormComponent", () => {
   it("should render the content of this component", () => {
-    const routes = [
-      {
-        path: "/",
-        element: <LogInFormComponent />,
-      },
-    ];
-
-    const router = createMemoryRouter(routes, {});
+    const router = createMemoryRouter(routes, {
+      initialEntries: ["/", "/account/login"],
+    });
 
     render(<RouterProvider router={router} />);
 
@@ -34,6 +30,8 @@ describe("should render LogInFormComponent", () => {
       "Don't an account yet? Sign Up Now",
     );
 
-    expect(screen.queryByRole("button").textContent).toMatch(/log in/i);
+    const logInBtn = screen.queryAllByRole("button");
+
+    expect(logInBtn[1].textContent).toMatch(/log in/i);
   });
 });
