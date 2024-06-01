@@ -37,7 +37,11 @@ function UserDashboardComponent() {
             </div>
             <div>
               <p className={styles.userLabel}>Verified Status:</p>
-              <p className={styles.userInformation}>Not Verified</p>
+              {!loggedInUser.verified_status ? (
+                <p className={styles.userInformation}>Not Verified</p>
+              ) : (
+                <p className={styles.userInformation}>Verified</p>
+              )}
               <a className={styles.userLink}>Apply for Verification</a>
             </div>
           </div>
