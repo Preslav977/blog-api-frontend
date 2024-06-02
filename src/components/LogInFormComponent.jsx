@@ -90,6 +90,7 @@ function LogInFormComponent() {
           <div className={styles.formContentWrapper}>
             <label htmlFor="email">Email:</label>
             <input
+              role="input-email"
               type="email"
               name="email"
               minLength={5}
@@ -107,6 +108,7 @@ function LogInFormComponent() {
           <div className={styles.formContentWrapper}>
             <label htmlFor="password">Password:</label>
             <input
+              role="input-password"
               type="password"
               name="password"
               minLength={8}

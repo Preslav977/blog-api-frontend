@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { describe, expect } from "vitest";
+import userEvent from "@testing-library/user-event";
 
 import routes from "../router/routes";
 
@@ -72,5 +73,33 @@ describe("should render LogInFormComponent", () => {
     const logInBtn = screen.queryAllByRole("button");
 
     expect(logInBtn[1].textContent).toMatch(/log in/i);
+  });
+
+  it("should render when the user types to hide the span errors.", async () => {
+    const router = createMemoryRouter(routes, {
+      initialEntries: ["/", "/account/login"],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    screen.debug();
+
+    const user = userEvent.setup();
+
+    await user.type(screen.getByRole("input-email"), "test@abv.bg");
+
+    expect(screen.getByRole("input-email")).toHaveValue("test@abv.bg");
+
+    expect(
+      screen.queryByText("Email does not match required format"),
+    ).not.toBeInTheDocument();
+
+    await user.type(screen.getByRole("input-password"), "12345678");
+
+    expect(screen.getByRole("input-password")).toHaveValue("12345678");
+
+    expect(
+      screen.queryByText("Password must be at least 8 characters long."),
+    ).not.toBeInTheDocument();
   });
 });
