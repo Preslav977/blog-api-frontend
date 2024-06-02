@@ -105,6 +105,7 @@ function SignUpFormComponent() {
           <div className={styles.formContentWrapper}>
             <label htmlFor="email">Email:</label>
             <input
+              role="input-email"
               type="email"
               name="email"
               minLength={5}
@@ -127,6 +128,7 @@ function SignUpFormComponent() {
           <div className={styles.formContentWrapper}>
             <label htmlFor="username">Username:</label>
             <input
+              role="input-username"
               type="text"
               name="username"
               minLength={5}
@@ -144,6 +146,7 @@ function SignUpFormComponent() {
           <div className={styles.formContentWrapper}>
             <label htmlFor="first_name">First Name:</label>
             <input
+              role="input-first_name"
               type="text"
               name="first_name"
               minLength={5}
@@ -161,6 +164,7 @@ function SignUpFormComponent() {
           <div className={styles.formContentWrapper}>
             <label htmlFor="last_name">Last Name:</label>
             <input
+              role="input-last_name"
               type="text"
               name="last_name"
               minLength={5}
@@ -178,6 +182,7 @@ function SignUpFormComponent() {
           <div className={styles.formContentWrapper}>
             <label htmlFor="password">Password:</label>
             <input
+              role="input-password"
               type="password"
               name="password"
               minLength={8}
@@ -194,6 +199,7 @@ function SignUpFormComponent() {
           <div className={styles.formContentWrapper}>
             <label htmlFor="confirm_password">Confirm Password:</label>
             <input
+              role="input-confirm_password"
               type="password"
               name="confirm_password"
               minLength={8}

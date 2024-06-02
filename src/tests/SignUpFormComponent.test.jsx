@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { describe, expect } from "vitest";
 import routes from "../router/routes";
+import userEvent from "@testing-library/user-event";
 
 describe("should render SignUpFormComponent", () => {
   it("should render the content of this component", () => {
@@ -78,9 +79,9 @@ describe("should render SignUpFormComponent", () => {
     );
 
     expect(
-      screen.queryByText("First  Name must be between 5 and 30 characters.")
+      screen.queryByText("First Name must be between 5 and 30 characters.")
         .textContent,
-    ).toMatch(/first name must be between 5 and 30 characters/i);
+    ).toMatch(/first name must be between 5 and 30 characters./i);
 
     expect(screen.queryByText("Last Name:").textContent).toMatch(/last name:/i);
 
@@ -106,5 +107,65 @@ describe("should render SignUpFormComponent", () => {
     expect(screen.queryByTestId("signUpFormTextAndLink").textContent).toEqual(
       "Already have an account? Login",
     );
+  });
+
+  it("should render when the user types to hide the span errors", async () => {
+    const router = createMemoryRouter(routes, {
+      initialEntries: ["/", "/account/signup"],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    screen.debug();
+
+    const user = userEvent.setup();
+
+    await user.type(screen.getByRole("input-email"), "test@abv.bg");
+
+    expect(screen.getByRole("input-email")).toHaveValue("test@abv.bg");
+
+    expect(
+      screen.queryByText("Email does not match required format"),
+    ).not.toBeInTheDocument();
+
+    await user.type(screen.getByRole("input-username"), "johnny");
+
+    expect(screen.getByRole("input-username")).toHaveValue("johnny");
+
+    expect(
+      screen.queryByText("Username must be between 5 and 30 characters."),
+    ).not.toBeInTheDocument();
+
+    await user.type(screen.getByRole("input-first_name"), "johnny");
+
+    expect(screen.getByRole("input-first_name")).toHaveValue("johnny");
+
+    expect(
+      screen.queryByText("First Name must be between 5 and 30 characters."),
+    ).not.toBeInTheDocument();
+
+    await user.type(screen.getByRole("input-last_name"), "bravo");
+
+    expect(screen.getByRole("input-last_name")).toHaveValue("bravo");
+
+    expect(
+      screen.queryByText("Last Name must be between 5 and 30 characters."),
+    ).not.toBeInTheDocument();
+
+    await user.type(screen.getByRole("input-password"), "12345678");
+
+    expect(screen.getByRole("input-password")).toHaveValue("12345678");
+
+    expect(
+      screen.queryByText("Password must be at least 8 characters long."),
+    ).not.toBeInTheDocument();
+
+    await user.type(screen.getByRole("input-confirm_password"), "12345678");
+
+    expect(screen.getByRole("input-confirm_password")).toHaveValue("12345678");
+
+    expect(
+      screen.queryByText("Password must be at least 8 characters long."),
+    ).not.toBeInTheDocument();
   });
 });
