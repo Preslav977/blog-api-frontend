@@ -49,16 +49,19 @@ function LogInFormComponent() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://blog-api-backend-production-5dc1.up.railway.app/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
         },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      );
 
       if (response.status === 401) {
         setError("Wrong credentials");
@@ -73,12 +76,15 @@ function LogInFormComponent() {
 
         setCheckIfUserIsLoggedIn(true);
 
-        const responseFetchUser = await fetch("http://localhost:3000/user", {
-          mode: "cors",
-          headers: {
-            Authorization: localStorage.getItem("token"),
+        const responseFetchUser = await fetch(
+          "https://blog-api-backend-production-5dc1.up.railway.app/user",
+          {
+            mode: "cors",
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
           },
-        });
+        );
 
         const loggedInUserInformation = await responseFetchUser.json();
 

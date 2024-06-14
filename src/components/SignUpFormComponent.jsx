@@ -58,20 +58,23 @@ function SignUpFormComponent() {
     setUserObject(createUser);
 
     try {
-      const response = await fetch("http://localhost:3000/user/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://blog-api-backend-production-5dc1.up.railway.app/user/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            username: userUsername,
+            first_name: userFirstName,
+            last_name: userLastName,
+            password: userPassword,
+            confirm_password: userConfirmPassword,
+          }),
         },
-        body: JSON.stringify({
-          email: userEmail,
-          username: userUsername,
-          first_name: userFirstName,
-          last_name: userLastName,
-          password: userPassword,
-          confirm_password: userConfirmPassword,
-        }),
-      });
+      );
 
       const result = await response.json();
 
