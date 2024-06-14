@@ -13,7 +13,7 @@ describe("should render LogInFormComponent", () => {
 
     render(<RouterProvider router={router} />);
 
-    screen.debug();
+    // screen.debug();
 
     expect(
       screen.queryByText("Welcome back to Bulgarian!").textContent,
@@ -52,7 +52,7 @@ describe("should render LogInFormComponent", () => {
 
     render(<RouterProvider router={router} />);
 
-    screen.debug();
+    // screen.debug();
 
     expect(
       screen.queryByText("Welcome back to Bulgarian!").textContent,
@@ -77,12 +77,12 @@ describe("should render LogInFormComponent", () => {
 
   it("should render when the user types to hide the span errors.", async () => {
     const router = createMemoryRouter(routes, {
-      initialEntries: ["/", "/account/login"],
+      initialEntries: ["", "/account/login"],
     });
 
     render(<RouterProvider router={router} />);
 
-    screen.debug();
+    // screen.debug();
 
     const user = userEvent.setup();
 

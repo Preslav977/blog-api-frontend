@@ -10,7 +10,7 @@ import { describe, expect } from "vitest";
 describe("Should render FetchPosts component", () => {
   it("should render Loading while the API fetches", async () => {
     const router = createMemoryRouter(routes, {
-      initialEntries: ["", "/posts/664467ebf1f4a04823a2bfe1/"],
+      initialEntries: ["", "/posts/666a851f024b1c34ece39586/"],
       initialIndex: 1,
     });
 
@@ -25,7 +25,7 @@ describe("Should render FetchPosts component", () => {
 
   it("should render first post on the main page", async () => {
     const router = createMemoryRouter(routes, {
-      initialEntries: ["", "/posts/664467ebf1f4a04823a2bfe1/"],
+      initialEntries: ["", "/posts/666a851f024b1c34ece39586/"],
       initialIndex: 1,
     });
 
@@ -53,9 +53,9 @@ describe("Should render FetchPosts component", () => {
 
     expect(postImg).toBeInTheDocument();
 
-    expect(screen.queryByText("Preslaw").textContent).toMatch(/preslaw/i);
+    expect(screen.queryByText("preslaw").textContent).toMatch(/preslaw/i);
 
-    expect(screen.queryByText("Cvetanow").textContent).toMatch(/cvetanow/i);
+    expect(screen.queryByText("cvetanow").textContent).toMatch(/cvetanow/i);
 
     expect(
       screen.queryByText("Photo by Trekking Bulgaria").textContent,
@@ -68,7 +68,7 @@ describe("Should render FetchPosts component", () => {
 
   it("should render second post on the main page", async () => {
     const router = createMemoryRouter(routes, {
-      initialEntries: ["", "/posts/66446886f1f4a04823a2bff3"],
+      initialEntries: ["", "/posts/666a852d024b1c34ece39589"],
       initialIndex: 1,
     });
 
@@ -98,9 +98,9 @@ describe("Should render FetchPosts component", () => {
 
     expect(postImg).toBeInTheDocument();
 
-    expect(screen.queryByText("Preslaw").textContent).toMatch(/preslaw/i);
+    expect(screen.queryByText("preslaw").textContent).toMatch(/preslaw/i);
 
-    expect(screen.queryByText("Cvetanow").textContent).toMatch(/cvetanow/i);
+    expect(screen.queryByText("cvetanow").textContent).toMatch(/cvetanow/i);
 
     expect(
       screen.queryByText("Photo by Trekking Bulgaria").textContent,
@@ -121,7 +121,7 @@ describe("Should render FetchPosts component", () => {
 
   it("should render third post on the main page", async () => {
     const router = createMemoryRouter(routes, {
-      initialEntries: ["", "/posts/66446904f1f4a04823a2c017"],
+      initialEntries: ["", "/posts/666a8b0885f453255bc8014b"],
       initialIndex: 1,
     });
 
@@ -153,9 +153,9 @@ describe("Should render FetchPosts component", () => {
 
     expect(postImg).toBeInTheDocument();
 
-    expect(screen.queryByText("Preslaw").textContent).toMatch(/preslaw/i);
+    expect(screen.queryByText("preslaw").textContent).toMatch(/preslaw/i);
 
-    expect(screen.queryByText("Cvetanow").textContent).toMatch(/cvetanow/i);
+    expect(screen.queryByText("cvetanow").textContent).toMatch(/cvetanow/i);
 
     expect(
       screen.queryByText("Photo by Bulgarian Travel Org").textContent,
@@ -174,7 +174,7 @@ describe("Should render FetchPosts component", () => {
 
   it("should render fourth post on the main page", async () => {
     const router = createMemoryRouter(routes, {
-      initialEntries: ["", "/posts/664468bef1f4a04823a2c005"],
+      initialEntries: ["", "/posts/666a853a024b1c34ece3958c"],
       initialIndex: 1,
     });
 
@@ -204,9 +204,9 @@ describe("Should render FetchPosts component", () => {
 
     expect(postImg).toBeInTheDocument();
 
-    expect(screen.queryByText("Preslaw").textContent).toMatch(/preslaw/i);
+    expect(screen.queryByText("preslaw").textContent).toMatch(/preslaw/i);
 
-    expect(screen.queryByText("Cvetanow").textContent).toMatch(/cvetanow/i);
+    expect(screen.queryByText("cvetanow").textContent).toMatch(/cvetanow/i);
 
     expect(
       screen.queryByText("Photo by Bulgaria Travel Org").textContent,
@@ -223,7 +223,7 @@ describe("Should render FetchPosts component", () => {
 
   it("should render fifth post on the main page", async () => {
     const router = createMemoryRouter(routes, {
-      initialEntries: ["", "/posts/6644693ff1f4a04823a2c029"],
+      initialEntries: ["", "/posts/666a8560024b1c34ece39592"],
       initialIndex: 1,
     });
 
@@ -257,9 +257,9 @@ describe("Should render FetchPosts component", () => {
 
     expect(postImg).toBeInTheDocument();
 
-    expect(screen.queryByText("Preslaw").textContent).toMatch(/preslaw/i);
+    expect(screen.queryByText("preslaw").textContent).toMatch(/preslaw/i);
 
-    expect(screen.queryByText("Cvetanow").textContent).toMatch(/cvetanow/i);
+    expect(screen.queryByText("cvetanow").textContent).toMatch(/cvetanow/i);
 
     expect(
       screen.queryByText("Photo by Bulgarian Travel Org").textContent,

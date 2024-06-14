@@ -1,6 +1,7 @@
 import styles from "./FlexedPostComponent.module.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 function FlexedPostComponent({
   postImgPathId,
@@ -13,6 +14,8 @@ function FlexedPostComponent({
   postBodyPathId,
   postBody,
 }) {
+  const sanitizedHTMLContent = DOMPurify.sanitize(postBody);
+
   return (
     <>
       <article className={styles.mainPageFlexedPostContainer}>
@@ -35,16 +38,15 @@ function FlexedPostComponent({
             </Link>
           </div>
           <Link to={postTitlePathId}>
-            <h2>{postTitle}</h2>
+            <h2 className={styles.mainPagePostHeader}>{postTitle}</h2>
           </Link>
           <div className={styles.mainPageFlexedPostBody}>
             <Link to={postBodyPathId}>
-              <p
+              <div
+                dangerouslySetInnerHTML={{ __html: sanitizedHTMLContent }}
                 data-testid="postBody"
                 className={styles.postFlexedDescription}
-              >
-                {postBody}
-              </p>
+              ></div>
             </Link>
           </div>
         </div>

@@ -23,7 +23,7 @@
 }
 
 .userInformationHeader {
-  margin-top: 1.5em;
+  margin-top: var(--user-information-header-margin-top);
   margin-bottom: var(--form-content-margin-bottom);
 }
 
@@ -64,8 +64,51 @@
   color: var(--author-link-color);
 }
 
-@media screen and (max-width: 470px) {
+.userDashboardPostHeader {
+  margin-left: var(--user-dashboard-post-header-margin-left);
+  margin-bottom: var(--nav-post-image-margin-bottom);
+}
+
+.managePostButtons {
+  margin-left: var(--manage-post-buttons-margin-left);
+}
+
+.managePostButton + .managePostButton {
+  margin-left: var(--user-dashboard-post-header-margin-left);
+}
+
+@media screen and (max-width: 500px) {
   .userLink {
-    font-size: 0.6rem;
+    font-size: var(--user-link-font-size);
+    display: block;
+    max-width: var(--user-link-max-width);
+    text-align: center;
+  }
+
+  .userDashboardLeftContent {
+    margin-right: var(--user-dashboard-left-content-margin-right);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .userDashboardPostHeader {
+    text-align: center;
+    margin-bottom: var(--article-author-information-margin-bottom);
+    margin-left: 0;
+  }
+
+  .managePostButtons {
+    margin-left: 0;
+  }
+
+  .managePostButton + .managePostButton {
+    margin-left: 0;
+  }
+
+  .managePostButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--main-community-gap);
   }
 }

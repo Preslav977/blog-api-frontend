@@ -112,6 +112,8 @@ describe("Should render NavComponent", () => {
 
     await user.click(folkloreLink);
 
+    screen.debug();
+
     const postCategory = screen.queryAllByTestId("postCategory");
 
     expect(postCategory[0].textContent).toEqual("folklore");

@@ -234,7 +234,7 @@ describe("should render FlexComponent posts by category", () => {
     expect(postImg).toBeInTheDocument();
   });
 
-  it("should render traditions post category on the main page", async () => {
+  it("should render custom post category on the main page", async () => {
     const router = createMemoryRouter(routes, {
       initialEntries: ["", "/posts/category/66446a59f1f4a04823a2c07d"],
       initialIndex: 1,
@@ -250,13 +250,13 @@ describe("should render FlexComponent posts by category", () => {
 
     const postImg = screen.getByTestId("postImg");
 
-    const postCategory = screen.queryByText("customs");
+    const postCategory = screen.queryAllByText("customs");
 
     const postTitle = screen.queryByText("Traditional Customs of Bulgaria");
 
     const postBody = screen.getByTestId("postBody");
 
-    expect(postCategory.textContent).toEqual("customs");
+    expect(postCategory[0].textContent).toEqual("customs");
 
     expect(postTitle.textContent).toEqual("Traditional Customs of Bulgaria");
 

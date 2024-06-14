@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 export const emailRegex =
   // eslint-disable-next-line no-useless-escape
-  /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
+  /^([a-z\d\.-_]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/;
 
 function SignUpFormComponent() {
   const { userObject, setUserObject } = useContext(UserContext);

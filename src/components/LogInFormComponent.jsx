@@ -23,23 +23,23 @@ function LogInFormComponent() {
     LoggedInUserInformationContext,
   );
 
-  useEffect(() => {
-    fetch("http://localhost:3000/user", {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-      mode: "cors",
-    })
-      .then((response) => {
-        if (response.status >= 400) {
-          throw new Error("Server Error");
-        }
-        return response.json();
-      })
-      .then((response) => setLoggedInUser(response))
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false));
-  }, [setLoggedInUser]);
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/user", {
+  //     headers: {
+  //       Authorization: localStorage.getItem("token"),
+  //     },
+  //     mode: "cors",
+  //   })
+  //     .then((response) => {
+  //       if (response.status >= 400) {
+  //         throw new Error("Server Error");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((response) => setLoggedInUser(response))
+  //     .catch((error) => setError(error))
+  //     .finally(() => setLoading(false));
+  // }, [setLoggedInUser]);
 
   // if (loading) return <p data-testid="loading">Loading....</p>;
   // if (error) return <p>A network error was encountered</p>;
@@ -59,15 +59,35 @@ function LogInFormComponent() {
         }),
       });
 
-      const result = await response.json();
+      if (response.status === 401) {
+        setError("Wrong credentials");
+      } else {
+        const result = await response.json();
 
-      const bearerToken = ["Bearer", result.token];
+        const bearerToken = ["Bearer", result.token];
 
-      localStorage.setItem("token", JSON.stringify(bearerToken));
+        localStorage.setItem("token", JSON.stringify(bearerToken));
 
-      navigate("/");
+        navigate("/");
 
-      setIsUserLogged(true);
+        setIsUserLogged(true);
+
+        const responseFetchUser = await fetch("http://localhost:3000/user", {
+          mode: "cors",
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        });
+
+        const loggedInUser = await responseFetchUser.json();
+
+        const obj = {
+          ...loggedInUser,
+          loggedInUser,
+        };
+
+        setLoggedInUser(obj);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -104,6 +124,9 @@ function LogInFormComponent() {
                 Email does not match required format
               </span>
             )}
+            {error === "Wrong credentials" && (
+              <span className={styles.error}>{error}</span>
+            )}
           </div>
           <div className={styles.formContentWrapper}>
             <label htmlFor="password">Password:</label>
@@ -120,6 +143,9 @@ function LogInFormComponent() {
               <span className={styles.error}>
                 Password must be at least 8 characters long.
               </span>
+            )}
+            {error === "Unauthorized" && (
+              <span className={styles.error}>Unauthorized</span>
             )}
           </div>
           <div className={styles.logInButtonContainer}>

@@ -1,12 +1,23 @@
 import styles from "./NavComponent.module.css";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { PostContext, IsUserLoggedContext } from "../App";
+import {
+  PostContext,
+  IsUserLoggedContext,
+  LoggedInUserInformationContext,
+} from "../App";
+import { useNavigate } from "react-router-dom";
 
 function NavComponent() {
   const [navComponentDropDown, setNavComponentDropDrop] = useState(false);
   const [posts, setPosts] = useContext(PostContext);
   const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
+
+  const [loggedInUser, setLoggedInUser] = useContext(
+    LoggedInUserInformationContext,
+  );
+
+  const navigate = useNavigate();
 
   const [loggedInUserDropDown, setLoggedInUserDropDown] = useState(false);
 
@@ -17,6 +28,16 @@ function NavComponent() {
   function toggleLoggedUserDropDrown() {
     setLoggedInUserDropDown((loggedInUserDropDown) => !loggedInUserDropDown);
   }
+
+  function logoutUser() {
+    navigate("/");
+
+    setIsUserLogged(false);
+
+    localStorage.clear();
+  }
+
+  console.log(loggedInUser);
 
   if (!navComponentDropDown) {
     return (
@@ -46,10 +67,11 @@ function NavComponent() {
               <div className={styles.loggedUserContainer}>
                 <div className={styles.loggedUserImgContainer}>
                   <img
+                    data-testid="logged-user-img"
                     onClick={toggleLoggedUserDropDrown}
                     className={styles.loggedInUserSvg}
                     src="/bulgarian-flag-icon.jpeg"
-                    alt=""
+                    alt="bulgarian flag profile image"
                   />
                 </div>
                 {!loggedInUserDropDown ? (
@@ -57,13 +79,10 @@ function NavComponent() {
                 ) : (
                   <div className={styles.loggedInToggleDropDown}>
                     <li>
-                      <Link to="/create">Create Post</Link>
-                    </li>
-                    <li>
                       <Link to="/account">Account</Link>
                     </li>
                     <li>
-                      <Link to="/logout">Logout</Link>
+                      <Link onClick={logoutUser}>Logout</Link>
                     </li>
                   </div>
                 )}
@@ -109,7 +128,7 @@ function NavComponent() {
                     onClick={toggleLoggedUserDropDrown}
                     className={styles.loggedInUserSvg}
                     src="/bulgarian-flag-icon.jpeg"
-                    alt=""
+                    alt="bulgarian flag profile image"
                   />
                 </div>
                 {!loggedInUserDropDown ? (
@@ -117,13 +136,10 @@ function NavComponent() {
                 ) : (
                   <div className={styles.loggedInToggleDropDown}>
                     <li>
-                      <Link to="/create">Create Post</Link>
-                    </li>
-                    <li>
                       <Link to="/account">Account</Link>
                     </li>
                     <li>
-                      <Link to="/logout">Logout</Link>
+                      <Link onClick={logoutUser}>Logout</Link>
                     </li>
                   </div>
                 )}
@@ -192,7 +208,7 @@ function NavComponent() {
                         <img
                           className={styles.navPostImg}
                           src={post.image_link}
-                          alt=""
+                          alt="bulgarian posts images"
                         />
                       </Link>
                     </figure>
@@ -205,7 +221,9 @@ function NavComponent() {
                           {post.category[0].category}
                         </Link>
                         <Link to={`/posts/${post._id}`}>
-                          <h2>{post.title}</h2>
+                          <h2 className={styles.navComponentPostHeaders}>
+                            {post.title}
+                          </h2>
                         </Link>
                       </div>
                     </div>

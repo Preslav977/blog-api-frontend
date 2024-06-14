@@ -25,7 +25,7 @@
 }
 
 .navSvgIcons:first-child {
-  margin-left: var(-nav-svg-icons-margin-left);
+  margin-left: var(--nav-svg-icons-margin-left);
   width: var(--nav-svg-icons-width);
 }
 
@@ -123,11 +123,31 @@
 
 .navPostImg {
   max-height: var(--nav-post-image-min-height);
+  aspect-ratio: var(--nav-post-image-aspect-ratio);
   object-fit: var(--grid-image-object-fit);
 }
 
 .navPostDescription {
   margin-left: var(--nav-post-description-margin-left);
+}
+
+.navContent > li,
+.navigationLinks,
+.loggedInUserSvg {
+  cursor: pointer;
+}
+
+.navContent > li:hover,
+.navigationLinks h2:hover,
+.navigationLinks a:hover {
+  border-bottom: var(--nav-content-and-navigation-links-border);
+  margin-bottom: var(--nav-content-and-navigation-links-margin-bottom);
+}
+
+.navigationLinks h2,
+.navComponentPostHeaders {
+  font-size: var(--navigation-links-and-post-headers-font-size);
+  font-weight: var(--navigation-links-and-post-headers-font-weight);
 }
 
 @media screen and (max-width: 900px) {

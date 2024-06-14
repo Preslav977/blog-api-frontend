@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import styles from "./FetchSinglePost.module.css";
 import { Link } from "react-router-dom";
 import { IsUserLoggedContext, LoggedInUserInformationContext } from "../App";
+import { format } from "date-fns";
+import DOMPurify from "dompurify";
 
 function FetchSinglePost() {
   const [post, setPost] = useState();
@@ -34,6 +36,8 @@ function FetchSinglePost() {
   if (loading) return <p data-testid="loading">Loading....</p>;
   if (error) return <p>A network error was encountered</p>;
 
+  const sanitizedHTMLContent = DOMPurify.sanitize(post.body);
+
   async function submitComment(e) {
     e.preventDefault();
 
@@ -63,8 +67,6 @@ function FetchSinglePost() {
         },
       );
       const result = await response.json();
-
-      console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -91,7 +93,6 @@ function FetchSinglePost() {
         },
       );
       const result = await response.json();
-
       console.log(result);
     } catch (err) {
       console.log(err);
@@ -110,7 +111,8 @@ function FetchSinglePost() {
       <div className={styles.articleAuthorInformation}>
         <h2>{post.title}</h2>
         <div className={styles.articleAuthorAndDateContainer}>
-          <p>{post.date}</p> | <span>by</span> <p>{post.author.first_name}</p>
+          <p>{format(post.date, "dd.MM.yyyy")}</p> | <span>by</span>{" "}
+          <p>{post.author.first_name}</p>
           <p>{post.author.last_name}</p>
         </div>
       </div>
@@ -119,12 +121,15 @@ function FetchSinglePost() {
           data-testid="postImg"
           className={styles.articleImage}
           src={post.image_link}
-          alt=""
+          alt="post article image"
         />
         <p>Photo by {post.image_owner}</p>
       </div>
       <div className={styles.articleDetailedDescriptionContainer}>
-        <p data-testid="postBody">{post.body}</p>
+        <div
+          data-testid="postBody"
+          dangerouslySetInnerHTML={{ __html: sanitizedHTMLContent }}
+        ></div>
       </div>
       <div className={styles.articleDetailedTagsContainer}>
         <h3>Tags</h3>
@@ -177,7 +182,7 @@ function FetchSinglePost() {
                 <p className={styles.articleUserNames}>
                   {postComments.user.first_name} {postComments.user.last_name}
                 </p>
-                <p>{postComments.date}</p>
+                <p>{format(postComments.date, "MMMM dd, yyyy")}</p>
                 <p className={styles.articleContent}>{postComments.content}</p>
                 <div className={styles.articleLikeContainer}>
                   {/* {!postComments.like > 0 ? (
@@ -195,7 +200,7 @@ function FetchSinglePost() {
                   )} */}
                   {/* <p className={styles.articleLike}>{postComments.like}</p> */}
                   {loggedInUser._id === postComments.user._id ? (
-                    <>
+                    <div className={styles.deleteCommentContainer}>
                       <img
                         onClick={() => {
                           (e) => e.preventDefault();
@@ -203,10 +208,33 @@ function FetchSinglePost() {
                         }}
                         className={styles.articleCommentLikeSvg}
                         src="/trashcan.svg"
-                        alt=""
+                        alt="trashcan that deletes the comments"
                       />
                       <p>Delete</p>
-                    </>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {loggedInUser.admin ? (
+                    <div className={styles.deleteCommentContainer}>
+                      <img
+                        onClick={() => {
+                          (e) => e.preventDefault();
+                          removeComment(postComments);
+                        }}
+                        className={styles.articleCommentLikeSvg}
+                        src="/trashcan.svg"
+                        alt="trashcan that deletes the comments"
+                      />
+                      <p
+                        onClick={() => {
+                          (e) => e.preventDefault();
+                          removeComment(postComments);
+                        }}
+                      >
+                        Delete
+                      </p>
+                    </div>
                   ) : (
                     ""
                   )}

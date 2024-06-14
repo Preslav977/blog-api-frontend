@@ -1,7 +1,7 @@
 .featuredTagsContainer {
   display: flex;
   flex-direction: column;
-  padding: var(--featured-tags-padding);
+  padding: var(--featured-tags-container-padding);
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -20,7 +20,7 @@
 
 .featuredTags > a {
   outline: var(--article-category-outline);
-  padding: var(--image-owner-padding);
+  padding: var(--featured-tags-padding);
   box-shadow: var(--article-category-box-shadow);
   text-transform: var(--article-category-text-transform);
   background-color: var(--article-category-background-color);
@@ -30,4 +30,9 @@
 
 .featuredTags > a:visited {
   color: var(--article-category-color);
+}
+
+.featuredTagsContainer h4 {
+  font-size: var(--featured-tags-container-font-size);
+  text-transform: var(--featured-tags-container-text-transform);
 }

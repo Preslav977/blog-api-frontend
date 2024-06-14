@@ -2,7 +2,6 @@ import { useState, createContext } from "react";
 import "./index.css";
 import NavComponent from "./components/NavComponent";
 import FooterComponent from "./components/FooterComponent";
-import UserDashboardComponent from "./components/UserDashboardComponent";
 
 import { Outlet } from "react-router-dom";
 
@@ -38,7 +37,7 @@ function App() {
     confirm_password: "",
   });
 
-  const [loggedInUser, setLoggedInUser] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState({});
 
   const [IsUserLogged, setIsUserLogged] = useState(false);
 
