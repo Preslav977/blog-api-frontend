@@ -3,21 +3,20 @@ import { LoggedInUserInformationContext, IsUserLoggedContext } from "../App";
 import styles from "./UserDashboardComponent.module.css";
 
 function UserDashboardComponent() {
-  const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
+  const [checkIfUserLoggedIn, setCheckIfUserLoggedIn] =
+    useContext(IsUserLoggedContext);
 
-  const [loggedInUser, setLoggedInUser] = useContext(
+  const [loggedInUserInformation, setLoggedInUserInformation] = useContext(
     LoggedInUserInformationContext,
   );
 
-  console.log(loggedInUser);
-
-  if (IsUserLogged) {
+  if (checkIfUserLoggedIn) {
     return (
       <div className={styles.userDashboardWrapper}>
         <div className={styles.userDashboardContainer}>
           <div className={styles.greetingUserContainer}>
             <h2 className={styles.greetingUser}>
-              Welcome, {loggedInUser.first_name}
+              Welcome, {loggedInUserInformation.first_name}
             </h2>
             <p>Welcome to dashboard!</p>
             <p className={styles.userWarningParagraph}>
@@ -31,18 +30,21 @@ function UserDashboardComponent() {
               <div className={styles.userContent}>
                 <p className={styles.userLabel}>First Name:</p>
                 <p className={styles.userInformation}>
-                  {loggedInUser.first_name}
+                  {loggedInUserInformation.first_name}
                 </p>
                 <a className={styles.userLink}>Change First Name</a>
               </div>
               <div>
                 <p className={styles.userLabel}>Email:</p>
-                <p className={styles.userInformation}> {loggedInUser.email}</p>
+                <p className={styles.userInformation}>
+                  {" "}
+                  {loggedInUserInformation.email}
+                </p>
                 <a className={styles.userLink}>Change Email</a>
               </div>
               <div>
                 <p className={styles.userLabel}>Verified Status:</p>
-                {!loggedInUser.verified_status ? (
+                {!loggedInUserInformation.verified_status ? (
                   <p className={styles.userInformation}>Not Verified</p>
                 ) : (
                   <p className={styles.userInformation}>Verified</p>
@@ -55,7 +57,7 @@ function UserDashboardComponent() {
                 <p className={styles.userLabel}>Last Name:</p>
                 <p className={styles.userInformation}>
                   {" "}
-                  {loggedInUser.last_name}
+                  {loggedInUserInformation.last_name}
                 </p>
                 <a className={styles.userLink}>Change Last Name</a>
               </div>
@@ -63,7 +65,7 @@ function UserDashboardComponent() {
                 <p className={styles.userLabel}>Username:</p>
                 <p className={styles.userInformation}>
                   {" "}
-                  {loggedInUser.username}
+                  {loggedInUserInformation.username}
                 </p>
                 <a className={styles.userLink}>Change Username</a>
               </div>

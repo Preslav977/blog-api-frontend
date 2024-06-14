@@ -37,9 +37,9 @@ function App() {
     confirm_password: "",
   });
 
-  const [loggedInUser, setLoggedInUser] = useState({});
+  const [loggedInUserInformation, setLoggedInUserInformation] = useState({});
 
-  const [IsUserLogged, setIsUserLogged] = useState(false);
+  const [checkIfUserIsLoggedIn, setCheckIfUserIsLoggedIn] = useState(false);
 
   const [email, setEmail] = useState("");
 
@@ -56,9 +56,11 @@ function App() {
   return (
     <>
       <LoggedInUserInformationContext.Provider
-        value={[loggedInUser, setLoggedInUser]}
+        value={[loggedInUserInformation, setLoggedInUserInformation]}
       >
-        <IsUserLoggedContext.Provider value={[IsUserLogged, setIsUserLogged]}>
+        <IsUserLoggedContext.Provider
+          value={[checkIfUserIsLoggedIn, setCheckIfUserIsLoggedIn]}
+        >
           <PostContext.Provider value={[posts, setPosts]}>
             <NavComponent />
             <UserContext.Provider value={{ userObject, setUserObject }}>

@@ -14,16 +14,11 @@ function AuthorComponent() {
             className={styles.authorInformation}
           >
             Check out your own{" "}
-            <a className={styles.authorAnchor} href="#">
-              author suite!
-            </a>{" "}
-            This suite allows you to create, edit, and preview posts in this
-            blog!
+            <a className={styles.authorAnchor}>author suite!</a> This suite
+            allows you to create, edit, and preview posts in this blog!
           </p>
           <div>
-            <a className={styles.authorLink} href="#">
-              Go to link
-            </a>
+            <a className={styles.authorLink}>Go to link</a>
           </div>
         </div>
         <div className={styles.authorSectionImgContainer}>

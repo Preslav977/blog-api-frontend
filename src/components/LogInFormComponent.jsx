@@ -1,6 +1,6 @@
 import styles from "./LogInFormComponent.module.css";
 import { Link } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { EmailContext } from "../App";
 import { PasswordContext } from "../App";
 import { emailRegex } from "./SignUpFormComponent";
@@ -8,7 +8,8 @@ import { IsUserLoggedContext, LoggedInUserInformationContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 function LogInFormComponent() {
-  const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
+  const [checkIfUserIsLoggedIn, setCheckIfUserIsLoggedIn] =
+    useContext(IsUserLoggedContext);
 
   const { email, setEmail } = useContext(EmailContext);
 
@@ -19,7 +20,7 @@ function LogInFormComponent() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const [loggedInUser, setLoggedInUser] = useContext(
+  const [loggedInUserInformation, setLoggedInUserInformation] = useContext(
     LoggedInUserInformationContext,
   );
 
@@ -70,7 +71,7 @@ function LogInFormComponent() {
 
         navigate("/");
 
-        setIsUserLogged(true);
+        setCheckIfUserIsLoggedIn(true);
 
         const responseFetchUser = await fetch("http://localhost:3000/user", {
           mode: "cors",
@@ -79,14 +80,14 @@ function LogInFormComponent() {
           },
         });
 
-        const loggedInUser = await responseFetchUser.json();
+        const loggedInUserInformation = await responseFetchUser.json();
 
         const obj = {
-          ...loggedInUser,
-          loggedInUser,
+          ...loggedInUserInformation,
+          loggedInUserInformation,
         };
 
-        setLoggedInUser(obj);
+        setLoggedInUserInformation(obj);
       }
     } catch (err) {
       console.log(err);

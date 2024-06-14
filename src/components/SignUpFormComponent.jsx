@@ -74,7 +74,6 @@ function SignUpFormComponent() {
       });
 
       const result = await response.json();
-      console.log(result);
 
       if (result.message === "Successfully created user.") {
         setEmail("");
@@ -119,11 +118,6 @@ function SignUpFormComponent() {
                 Email does not match required format
               </span>
             )}
-            {/* {navigateToLogin.success === null && (
-              <span className={styles.error}>
-                Username with that email exists
-              </span>
-            )} */}
           </div>
           <div className={styles.formContentWrapper}>
             <label htmlFor="username">Username:</label>

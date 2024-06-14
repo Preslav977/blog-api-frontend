@@ -1,21 +1,14 @@
 import styles from "./NavComponent.module.css";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import {
-  PostContext,
-  IsUserLoggedContext,
-  LoggedInUserInformationContext,
-} from "../App";
+import { PostContext, IsUserLoggedContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 function NavComponent() {
   const [navComponentDropDown, setNavComponentDropDrop] = useState(false);
   const [posts, setPosts] = useContext(PostContext);
-  const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
-
-  const [loggedInUser, setLoggedInUser] = useContext(
-    LoggedInUserInformationContext,
-  );
+  const [checkIfUserLoggedIn, setCheckIfUserLoggedIn] =
+    useContext(IsUserLoggedContext);
 
   const navigate = useNavigate();
 
@@ -32,12 +25,10 @@ function NavComponent() {
   function logoutUser() {
     navigate("/");
 
-    setIsUserLogged(false);
+    setCheckIfUserLoggedIn(false);
 
     localStorage.clear();
   }
-
-  console.log(loggedInUser);
 
   if (!navComponentDropDown) {
     return (
@@ -59,7 +50,7 @@ function NavComponent() {
             </span>
           </Link>
           <div className={styles.navRightSideContent}>
-            {!IsUserLogged ? (
+            {!checkIfUserLoggedIn ? (
               <Link to={"/account/login"}>
                 <button className={styles.loginButton}>Log in</button>
               </Link>
@@ -117,7 +108,7 @@ function NavComponent() {
             </span>
           </Link>
           <div className={styles.navRightSideContent}>
-            {!IsUserLogged ? (
+            {!checkIfUserLoggedIn ? (
               <Link to={"/account/login"}>
                 <button className={styles.loginButton}>Log in</button>
               </Link>

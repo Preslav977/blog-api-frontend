@@ -10,9 +10,10 @@ function FetchSinglePost() {
   const [post, setPost] = useState();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [IsUserLogged, setIsUserLogged] = useContext(IsUserLoggedContext);
+  const [checkIfUserIsLoggedIn, setCheckIfUserIsLoggedIn] =
+    useContext(IsUserLoggedContext);
 
-  const [loggedInUser, setLoggedInUser] = useContext(
+  const [loggedInUserInformation, setLoggedInUserInformation] = useContext(
     LoggedInUserInformationContext,
   );
 
@@ -147,7 +148,7 @@ function FetchSinglePost() {
       </div>
       <div className={styles.articleCommentsContainer}>
         <h3>Comments</h3>
-        {!IsUserLogged ? (
+        {!checkIfUserIsLoggedIn ? (
           <p className={styles.articleLogInUser}>
             You must be logged in to add a comment
           </p>
@@ -199,45 +200,48 @@ function FetchSinglePost() {
                     />
                   )} */}
                   {/* <p className={styles.articleLike}>{postComments.like}</p> */}
-                  {loggedInUser._id === postComments.user._id ? (
-                    <div className={styles.deleteCommentContainer}>
-                      <img
-                        onClick={() => {
-                          (e) => e.preventDefault();
-                          removeComment(postComments);
-                        }}
-                        className={styles.articleCommentLikeSvg}
-                        src="/trashcan.svg"
-                        alt="trashcan that deletes the comments"
-                      />
-                      <p>Delete</p>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                  {loggedInUser.admin ? (
-                    <div className={styles.deleteCommentContainer}>
-                      <img
-                        onClick={() => {
-                          (e) => e.preventDefault();
-                          removeComment(postComments);
-                        }}
-                        className={styles.articleCommentLikeSvg}
-                        src="/trashcan.svg"
-                        alt="trashcan that deletes the comments"
-                      />
-                      <p
-                        onClick={() => {
-                          (e) => e.preventDefault();
-                          removeComment(postComments);
-                        }}
-                      >
-                        Delete
-                      </p>
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                  <>
+                    {loggedInUserInformation._id === postComments.user._id &&
+                    !loggedInUserInformation.admin ? (
+                      <div className={styles.deleteCommentContainer}>
+                        <img
+                          onClick={() => {
+                            (e) => e.preventDefault();
+                            removeComment(postComments);
+                          }}
+                          className={styles.articleCommentLikeSvg}
+                          src="/trashcan.svg"
+                          alt="trashcan that deletes the comments"
+                        />
+                        <p>Delete</p>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    {loggedInUserInformation.admin ? (
+                      <div className={styles.deleteCommentContainer}>
+                        <img
+                          onClick={() => {
+                            (e) => e.preventDefault();
+                            removeComment(postComments);
+                          }}
+                          className={styles.articleCommentLikeSvg}
+                          src="/trashcan.svg"
+                          alt="trashcan that deletes the comments"
+                        />
+                        <p
+                          onClick={() => {
+                            (e) => e.preventDefault();
+                            removeComment(postComments);
+                          }}
+                        >
+                          Delete
+                        </p>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </>
                 </div>
               </div>
             ) : (
