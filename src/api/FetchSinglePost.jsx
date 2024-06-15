@@ -133,6 +133,7 @@ function FetchSinglePost() {
       </div>
       <div className={styles.articleDetailedDescriptionContainer}>
         <div
+          className={styles.articleDetailedInformation}
           data-testid="postBody"
           dangerouslySetInnerHTML={{ __html: sanitizedHTMLContent }}
         ></div>
@@ -169,7 +170,9 @@ function FetchSinglePost() {
                   className={styles.submitCommentTextArea}
                   name="content"
                   id=""
-                  placeholder="Enter you comment here"
+                  placeholder="Enter you comment here!"
+                  minLength={5}
+                  maxLength={100}
                   required
                 ></textarea>
                 <div className={styles.submitBtnCommentContainer}>

@@ -147,6 +147,13 @@
   --user-link-max-width: 100px;
   --user-dashboard-left-content-margin-right: 4em;
   --featured-tags-padding: 0.5em 0.6em;
+  --article-information-header-font-size: 1.8em;
+  --login-button-margin-left: 2em;
+  --login-button-smaller-screen-margin-left: 0.5em;
+  --login-button-padding: 0.3em 0.45em;
+  --login-button-smaller-screen-padding: 0.3em 0.4em;
+  --article-detailed-information-paragraph-width: 45%;
+  --article-detailed-information-paragraph-full-width: 100%;
 }
 
 *,

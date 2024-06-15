@@ -146,15 +146,15 @@ function SignUpFormComponent() {
               role="input-first_name"
               type="text"
               name="first_name"
-              minLength={5}
+              minLength={1}
               maxLength={30}
               required
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
-            {firstName.length < 5 && (
+            {firstName.length < 1 && (
               <span className={styles.error}>
-                First Name must be between 5 and 30 characters.
+                First Name must be between 1 and 30 characters.
               </span>
             )}
           </div>
@@ -164,15 +164,15 @@ function SignUpFormComponent() {
               role="input-last_name"
               type="text"
               name="last_name"
-              minLength={5}
+              minLength={3}
               maxLength={30}
               required
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
-            {lastName.length < 5 && (
+            {lastName.length < 3 && (
               <span className={styles.error}>
-                Last Name must be between 5 and 30 characters.
+                Last Name must be between 3 and 30 characters.
               </span>
             )}
           </div>
