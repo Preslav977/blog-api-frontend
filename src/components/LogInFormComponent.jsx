@@ -11,9 +11,9 @@ function LogInFormComponent() {
   const [checkIfUserIsLoggedIn, setCheckIfUserIsLoggedIn] =
     useContext(IsUserLoggedContext);
 
-  const { email, setEmail } = useContext(EmailContext);
+  let { email, setEmail } = useContext(EmailContext);
 
-  const { password, setPassword } = useContext(PasswordContext);
+  let { password, setPassword } = useContext(PasswordContext);
 
   const navigate = useNavigate();
 
@@ -23,27 +23,6 @@ function LogInFormComponent() {
   const [loggedInUserInformation, setLoggedInUserInformation] = useContext(
     LoggedInUserInformationContext,
   );
-
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/user", {
-  //     headers: {
-  //       Authorization: localStorage.getItem("token"),
-  //     },
-  //     mode: "cors",
-  //   })
-  //     .then((response) => {
-  //       if (response.status >= 400) {
-  //         throw new Error("Server Error");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((response) => setLoggedInUser(response))
-  //     .catch((error) => setError(error))
-  //     .finally(() => setLoading(false));
-  // }, [setLoggedInUser]);
-
-  // if (loading) return <p data-testid="loading">Loading....</p>;
-  // if (error) return <p>A network error was encountered</p>;
 
   async function HandleLogin(e) {
     e.preventDefault();
@@ -59,6 +38,65 @@ function LogInFormComponent() {
           body: JSON.stringify({
             email,
             password,
+          }),
+        },
+      );
+
+      if (response.status === 401) {
+        setError("Wrong credentials");
+      } else {
+        const result = await response.json();
+
+        const bearerToken = ["Bearer", result.token];
+
+        localStorage.setItem("token", JSON.stringify(bearerToken));
+
+        navigate("/");
+
+        setCheckIfUserIsLoggedIn(true);
+
+        const responseFetchUser = await fetch(
+          "https://blog-api-backend-production-5dc1.up.railway.app/user",
+          {
+            mode: "cors",
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          },
+        );
+
+        const loggedInUserInformation = await responseFetchUser.json();
+
+        const obj = {
+          ...loggedInUserInformation,
+          loggedInUserInformation,
+        };
+
+        setLoggedInUserInformation(obj);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function HandleTestUserLogIn(e) {
+    e.preventDefault();
+
+    const testUserEmail = "testuser@email.com";
+
+    const testUserPassword = "ranDom@PassWort2015";
+
+    try {
+      const response = await fetch(
+        "https://blog-api-backend-production-5dc1.up.railway.app/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: testUserEmail,
+            password: testUserPassword,
           }),
         },
       );
@@ -157,6 +195,14 @@ function LogInFormComponent() {
           </div>
           <div className={styles.logInButtonContainer}>
             <button className={styles.logInButton}>Log in</button>
+
+            <button
+              type="submit"
+              onClick={HandleTestUserLogIn}
+              className={styles.logInButton}
+            >
+              Log in as Guest
+            </button>
           </div>
           <p data-testid="logInFormTextAndLink">
             Don&apos;t an account yet?{" "}

@@ -154,9 +154,9 @@ function FetchSinglePost() {
       </div>
       <div className={styles.articleCommentsContainer}>
         <h3>Comments</h3>
-        {!checkIfUserIsLoggedIn ? (
+        {!checkIfUserIsLoggedIn || loggedInUserInformation.test_user ? (
           <p className={styles.articleLogInUser}>
-            You must be logged in to add a comment
+            You must be logged in or a normal user to add a comment
           </p>
         ) : (
           <>
@@ -169,7 +169,7 @@ function FetchSinglePost() {
                 <textarea
                   className={styles.submitCommentTextArea}
                   name="content"
-                  id=""
+                  id="content"
                   placeholder="Enter you comment here!"
                   minLength={5}
                   maxLength={100}
