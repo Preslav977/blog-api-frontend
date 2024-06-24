@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useRef } from "react";
 import "./index.css";
 import NavComponent from "./components/NavComponent";
 import FooterComponent from "./components/FooterComponent";

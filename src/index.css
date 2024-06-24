@@ -189,7 +189,8 @@ a:visited {
   color: black;
 }
 
-a:hover {
+a:hover,
+button:hover {
   cursor: pointer;
 }
 

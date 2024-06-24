@@ -39,8 +39,30 @@ function FetchSinglePost() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p data-testid="loading">Loading....</p>;
-  if (error) return <p>A network error was encountered</p>;
+  if (loading)
+    return (
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <p data-testid="loading">Loading....</p>
+      </div>
+    );
+  if (error)
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      return <p>A network error was encountered</p>
+    </div>;
 
   const sanitizedHTMLContent = DOMPurify.sanitize(post.body);
 
@@ -63,6 +85,7 @@ function FetchSinglePost() {
     try {
       const response = await fetch(
         `https://blog-api-backend-production-5dc1.up.railway.app/posts/${id}/comments`,
+
         {
           method: "POST",
           headers: {
@@ -73,6 +96,22 @@ function FetchSinglePost() {
         },
       );
       const result = await response.json();
+
+      const fetchPost = await fetch(
+        `https://blog-api-backend-production-5dc1.up.railway.app/posts/${id}`,
+        {
+          mode: "cors",
+        },
+      );
+
+      const post = await fetchPost.json();
+
+      const postObj = {
+        ...post,
+        post,
+      };
+
+      setPost(postObj);
     } catch (err) {
       console.log(err);
     }
@@ -99,7 +138,23 @@ function FetchSinglePost() {
         },
       );
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
+
+      const fetchPost = await fetch(
+        `https://blog-api-backend-production-5dc1.up.railway.app/posts/${id}`,
+        {
+          mode: "cors",
+        },
+      );
+
+      const post = await fetchPost.json();
+
+      const postObj = {
+        ...post,
+        post,
+      };
+
+      setPost(postObj);
     } catch (err) {
       console.log(err);
     }
@@ -192,7 +247,10 @@ function FetchSinglePost() {
                   {postComments.user.first_name} {postComments.user.last_name}
                 </p>
                 <p>{format(postComments.date, "MMMM dd, yyyy")}</p>
-                <p className={styles.articleContent}>{postComments.content}</p>
+                <p
+                  className={styles.articleContent}
+                  dangerouslySetInnerHTML={{ __html: postComments.content }}
+                ></p>
                 <div className={styles.articleLikeContainer}>
                   {/* {!postComments.like > 0 ? (
                     <img
@@ -211,7 +269,10 @@ function FetchSinglePost() {
                   <>
                     {loggedInUserInformation._id === postComments.user._id &&
                     !loggedInUserInformation.admin ? (
-                      <div className={styles.deleteCommentContainer}>
+                      <div
+                        onClick={removeComment}
+                        className={styles.deleteCommentContainer}
+                      >
                         <img
                           onClick={() => {
                             (e) => e.preventDefault();

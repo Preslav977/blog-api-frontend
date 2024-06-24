@@ -14,7 +14,10 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <FetchPosts /> },
-      { path: "/posts/:id", element: <FetchSinglePost /> },
+      {
+        path: "/posts/:id",
+        element: <FetchSinglePost />,
+      },
       { path: "/posts/category/:id", element: <FetchPostsByCategory /> },
       { path: "/posts/tag/:name", element: <FetchPostsByTags /> },
       { path: "/account/signup", element: <SignUpFormComponent /> },

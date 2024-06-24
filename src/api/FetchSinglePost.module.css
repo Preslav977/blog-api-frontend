@@ -143,6 +143,11 @@
   text-align: center;
 }
 
+.articleDetailedInformation > * {
+  margin: var(--margin-default);
+  text-align: center;
+}
+
 .articleDetailedInformation p {
   width: var(--article-detailed-information-paragraph-width);
   margin: var(--margin-default);
