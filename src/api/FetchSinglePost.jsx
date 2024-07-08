@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import DOMPurify from "dompurify";
 
 function FetchSinglePost() {
-  const [post, setPost] = useState();
+  const [post, setPost] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [checkIfUserIsLoggedIn, setCheckIfUserIsLoggedIn] =

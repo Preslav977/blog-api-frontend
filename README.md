@@ -1,5 +1,18 @@
 # blog-api-frontend
 
+Features:
+
+- Filter posts by ID
+- Filter posts by tag name
+- Filter posts by category
+- Add a comment.
+- Delete a comment.
+- Create a post.
+- Add post category
+- Update the privacy of the post.
+- Delete a post.
+- live validation when signing up or logging up.
+
 1. This is the result of the blog API frontend.
 
 ![Screenshot_2024-06-14_10-51-36](https://github.com/Preslav977/readme-repository/assets/119291608/c44c2d0f-0094-44cc-972f-8dfedff98108)
