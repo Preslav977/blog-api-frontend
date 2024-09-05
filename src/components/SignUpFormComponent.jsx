@@ -59,7 +59,7 @@ function SignUpFormComponent() {
 
     try {
       const response = await fetch(
-        "https://blog-api-backend-production-5dc1.up.railway.app/user/signup",
+        "https://living-valaree-lisika-8dbfbd43.koyeb.app/user/signup",
         {
           method: "POST",
           headers: {
