@@ -1,5 +1,5 @@
 import styles from "./NavComponent.module.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PostContext, IsUserLoggedContext } from "../App";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,26 @@ function NavComponent() {
     useContext(IsUserLoggedContext);
 
   const navigate = useNavigate();
+
+  const navDropDownMenuRef = useRef(null);
+
+  useEffect(() => {
+    function hideDropDownWhenClickedAway() {
+      console.log(navDropDownMenuRef.current.style.display);
+
+      if (
+        navComponentDropDown.current.style.display === "block" ||
+        navComponentDropDown.current.style.display === "null"
+      ) {
+        navComponentDropDown.current.style.display = "none";
+      }
+    }
+
+    window.addEventListener("click", hideDropDownWhenClickedAway);
+
+    return () =>
+      window.removeEventListener("click", hideDropDownWhenClickedAway);
+  });
 
   const [loggedInUserDropDown, setLoggedInUserDropDown] = useState(false);
 
@@ -144,7 +164,13 @@ function NavComponent() {
           </div>
         </ul>
         <div className={styles.navMenuWrapper}>
-          <div className={styles.navMenuContainer}>
+          <div
+            style={{
+              display: "block",
+            }}
+            className={styles.navMenuContainer}
+            ref={navDropDownMenuRef}
+          >
             <div className={styles.navMenuContent}>
               <nav className={styles.navigationLinks}>
                 <h2>Topics</h2>

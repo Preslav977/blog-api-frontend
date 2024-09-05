@@ -13,7 +13,7 @@ function FetchPosts() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://blog-api-backend-production-5dc1.up.railway.app/posts/", {
+    fetch("https://living-valaree-lisika-8dbfbd43.koyeb.app/posts", {
       mode: "cors",
     })
       .then((response) => {
@@ -26,6 +26,8 @@ function FetchPosts() {
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, [setPosts]);
+
+  console.log(posts);
 
   if (loading)
     return (

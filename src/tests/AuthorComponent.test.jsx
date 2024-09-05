@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import AuthorComponent from "../components/AuthorComponent";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
-import { describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("Should render AuthorComponent", () => {
   it("should render the component content", () => {

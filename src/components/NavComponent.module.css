@@ -91,6 +91,7 @@
   width: var(--grid-image-width);
   position: var(--image-owner-position);
   z-index: 1;
+  display: block;
 }
 
 .navMenuContainer {
