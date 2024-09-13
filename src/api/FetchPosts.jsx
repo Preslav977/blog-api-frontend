@@ -13,7 +13,7 @@ function FetchPosts() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://living-valaree-lisika-8dbfbd43.koyeb.app/posts", {
+    fetch("https://quixotic-chivalrous-quit.glitch.me/posts", {
       mode: "cors",
     })
       .then((response) => {

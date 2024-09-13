@@ -11,10 +11,9 @@ function FetchPostsByTags() {
   const { name } = useParams();
 
   useEffect(() => {
-    fetch(
-      `https://living-valaree-lisika-8dbfbd43.koyeb.app/posts/tag/${name}`,
-      { mode: "cors" },
-    )
+    fetch(`https://quixotic-chivalrous-quit.glitch.me/posts/tag/${name}`, {
+      mode: "cors",
+    })
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Server Error");

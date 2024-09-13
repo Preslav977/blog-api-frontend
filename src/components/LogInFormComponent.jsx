@@ -29,7 +29,7 @@ function LogInFormComponent() {
 
     try {
       const response = await fetch(
-        "https://living-valaree-lisika-8dbfbd43.koyeb.app/user/login",
+        "https://quixotic-chivalrous-quit.glitch.me/user/login",
         {
           method: "POST",
           headers: {
@@ -56,7 +56,7 @@ function LogInFormComponent() {
         setCheckIfUserIsLoggedIn(true);
 
         const responseFetchUser = await fetch(
-          "https://living-valaree-lisika-8dbfbd43.koyeb.app/user",
+          "https://quixotic-chivalrous-quit.glitch.me/user",
           {
             mode: "cors",
             headers: {
@@ -88,7 +88,7 @@ function LogInFormComponent() {
 
     try {
       const response = await fetch(
-        "https://living-valaree-lisika-8dbfbd43.koyeb.app/user/login",
+        "https://quixotic-chivalrous-quit.glitch.me/user/login",
         {
           method: "POST",
           headers: {
@@ -115,7 +115,7 @@ function LogInFormComponent() {
         setCheckIfUserIsLoggedIn(true);
 
         const responseFetchUser = await fetch(
-          "https://living-valaree-lisika-8dbfbd43.koyeb.app/user",
+          "https://quixotic-chivalrous-quit.glitch.me/user",
           {
             mode: "cors",
             headers: {

@@ -59,7 +59,7 @@ function SignUpFormComponent() {
 
     try {
       const response = await fetch(
-        "https://living-valaree-lisika-8dbfbd43.koyeb.app/user/signup",
+        "https://quixotic-chivalrous-quit.glitch.me/user/signup",
         {
           method: "POST",
           headers: {
