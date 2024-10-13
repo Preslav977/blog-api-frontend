@@ -30,8 +30,12 @@ function FetchPosts() {
   if (loading)
     return (
       <div data-testid="loading" className="loadingContainer">
-        <img className="loading" src="loading.svg" alt="Loading..." />
-        <p data-testid="loading">Loading....</p>;
+        <img
+          className="loading"
+          src="loading.svg"
+          alt="Loading it might take a while"
+        />
+        <p>Loading...</p>
       </div>
     );
 

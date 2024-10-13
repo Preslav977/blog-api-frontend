@@ -61,13 +61,13 @@ describe("Should render NavComponent", () => {
 
     render(<RouterProvider router={router} />);
 
+    const user = userEvent.setup();
+
     const apiLoading = screen.queryByTestId("loading");
 
     expect(apiLoading).toBeInTheDocument();
 
     await waitForElementToBeRemoved(() => screen.queryByTestId("loading"));
-
-    const user = userEvent.setup();
 
     const readLink = screen.getByTestId("read");
 

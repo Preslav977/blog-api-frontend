@@ -14,23 +14,23 @@ function NavComponent() {
 
   const navDropDownMenuRef = useRef(null);
 
-  useEffect(() => {
-    function hideDropDownWhenClickedAway() {
-      console.log(navDropDownMenuRef.current.style.display);
+  // useEffect(() => {
+  //   function hideDropDownWhenClickedAway() {
+  //     console.log(navDropDownMenuRef.current.style.display);
 
-      if (
-        navComponentDropDown.current.style.display === "block" ||
-        navComponentDropDown.current.style.display === "null"
-      ) {
-        navComponentDropDown.current.style.display = "none";
-      }
-    }
+  //     if (
+  //       navComponentDropDown.current.style.display === "block" ||
+  //       navComponentDropDown.current.style.display === "null"
+  //     ) {
+  //       navComponentDropDown.current.style.display = "none";
+  //     }
+  //   }
 
-    window.addEventListener("click", hideDropDownWhenClickedAway);
+  //   window.addEventListener("click", hideDropDownWhenClickedAway);
 
-    return () =>
-      window.removeEventListener("click", hideDropDownWhenClickedAway);
-  });
+  //   return () =>
+  //     window.removeEventListener("click", hideDropDownWhenClickedAway);
+  // });
 
   const [loggedInUserDropDown, setLoggedInUserDropDown] = useState(false);
 
