@@ -45,7 +45,7 @@ This part of the frontend allows the user to log in and read the posts, and they
 - HTTP status: handle response status 401 if the user is not authorized
 - Live Validation: how to use the user event type to test if there is a value on the input
 - Local Storage: how to store the token in the local storage after the user is logged in and send it back to the frontend with the Bearer schema.
-- DOM Purify: how to sanitize the HtML using dom purify and render it.
+- DOM Purify: how to sanitize the HTML using dom purify and render it.
 
 # Future Improvements
 
