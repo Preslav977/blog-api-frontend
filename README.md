@@ -24,6 +24,13 @@ This part of the frontend allows the user to log in and read the posts, and they
 - Live validation when signing up or logging up.
 - Guest account
 
+# Live Previews
+
+- [View the live site here](https://blog-api-frontend-lime.vercel.app/)
+- [View the live CMS site here](https://blog-api-cms-ten.vercel.app/)
+- [View the front-end CMS repository here](https://github.com/Preslav977/blog-api-cms)
+- [View the back-end API repository here](https://github.com/Preslav977/blog-api-backend)
+
 # Technology Used
 
 - React Context API: for allowing to pass down the state in the tree
